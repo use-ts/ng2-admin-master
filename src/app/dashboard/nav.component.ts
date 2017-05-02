@@ -41,22 +41,22 @@ export class NavComponent implements OnInit {
 
     this.routers = [
       {
-        href: this.dashboard,
-        name: "Dashboard",
-        type: false
-      },
-      {
         href: 'charts',
-        name: "Charts",
+        name: "状态总览",
         type: true,
         child: [
-          {href: this.lineCharts, name: "Line Charts"},
-          {href: this.pieCharts, name: "Pie Charts"}
+          {href: this.lineCharts, name: "图标插件"},
+          {href: this.pieCharts, name: "地图插件"}
         ]
       },
       {
+        href: this.dashboard,
+        name: "火警监控",
+        type: false
+      },
+      {
         href: 'tables',
-        name: "Tables",
+        name: "故障监控",
         type: true,
         child: [
           {href: this.datatable, name: "Data Tables"}
@@ -64,7 +64,7 @@ export class NavComponent implements OnInit {
       },
       {
         href: 'bootstrap',
-        name: "Bootstrap",
+        name: "用户管理",
         type: true,
         child: [
           {href: this.bootstrap, name: "Static Components"},

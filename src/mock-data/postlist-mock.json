@@ -1,0 +1,29 @@
+{
+"total":10,
+"items":[
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"希尔顿酒店",
+    "category":"烟感探测器","location":"B号楼3楼储藏室","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"大连万达娱乐城",
+    "category":"温感探测器","location":"2楼会客室","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"宁美家具城",
+    "category":"烟感探测器","location":"A栋124室内","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"希尔顿酒店",
+    "category":"烟感探测器","location":"B号楼3楼储藏室","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"大连万达娱乐城",
+    "category":"温感探测器","location":"2楼会客室","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"宁美家具城",
+    "category":"烟感探测器","location":"A栋124室内","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"希尔顿酒店",
+    "category":"烟感探测器","location":"B号楼3楼储藏室","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"大连万达娱乐城",
+    "category":"温感探测器","location":"2楼会客室","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"宁美家具城",
+    "category":"烟感探测器","location":"A栋124室内","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"希尔顿酒店",
+    "category":"烟感探测器","location":"B号楼3楼储藏室","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"大连万达娱乐城",
+    "category":"温感探测器","location":"2楼会客室","duration":"21秒"},
+    {"time":"2017/3/10 18:12:32","level":"火警","name":"宁美家具城",
+    "category":"烟感探测器","location":"A栋124室内","duration":"21秒"}
+
+]}

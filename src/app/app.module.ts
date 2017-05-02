@@ -13,6 +13,8 @@ import {AnalysisComponent} from './module/view.analysis';
 import {LoginComponent} from './login/login.component';
 import {DashboardModule} from './dashboard/dashboard.module';
 
+import { PostTableService } from './services/post-table.service';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +31,10 @@ import {DashboardModule} from './dashboard/dashboard.module';
     ChartsModule,
     DashboardModule
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers: [
+              {provide: LocationStrategy, useClass: HashLocationStrategy},
+              PostTableService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
