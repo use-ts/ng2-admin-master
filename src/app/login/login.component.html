@@ -8,20 +8,30 @@
       </div>
       <div class="hpanel">
         <div class="panel-body">
-          <form action="#" id="loginForm">
-            <div class="form-group"><label class="control-label" for="username">Username</label> <input
-              type="text" placeholder="example@gmail.com" title="Please enter you username" required
-              value="" name="username" id="username" class="form-control"> <span
-              class="help-block small">Your unique username to app</span></div>
-            <div class="form-group"><label class="control-label" for="password">Password</label> <input
-              type="password" title="Please enter your password" placeholder="******" required
-              value="" name="password" id="password" class="form-control"> <span
-              class="help-block small">Yur strong password</span></div>
+          <form (ngSubmit)="onSubmit()" #heroForm="ngForm" id="loginForm">
+            <div class="form-group"><label class="control-label" for="username">Username</label> 
+            <input type="text" placeholder="example@gmail.com" title="Please enter you username" required
+              [(ngModel)]="username" value="" name="username" id="username" class="form-control"> 
+              <span class="help-block small">Your unique username to app</span></div>
+
+            <div class="form-group"><label class="control-label" for="password">Password</label> 
+            <input type="password" title="Please enter your password" placeholder="******" required
+              [(ngModel)]="password" value="" name="password" id="password" class="form-control">           
+              <span class="help-block small">Yur strong password</span></div>
+
+            <div class="form-group"><label class="control-label" for="verifycode">Verifycode</label> 
+            <input type="text" title="Please enter your code" placeholder="1234" required
+              [(ngModel)]="verifycode" value="" name="verifycode" id="verifycode" class="form-control">   
+
+              <img ng-style="height:26px;width:50px;" id="codeImg" alt="点击更换" title="点击更换" src="http://10.78.116.122:8000/fire-auth/code.do">
+              <span class="help-block small">Please input the code</span></div>
+
             <div class="checkbox"><input icheck type="checkbox" ng-model="remember"
-                                         ng-init="remember = true"> Remember login <p
-              class="help-block small">(if this is a private computer)</p></div>
-            <button routerLink="/main/1" class="btn btn-success btn-block">Login</button>
-            <a class="btn btn-default btn-block" href="#">Register</a></form>
+                                         ng-init="remember = true"> Remember login 
+            <p class="help-block small">(if this is a private computer)</p></div>
+            <button type="submit" class="btn btn-success btn-block">Login</button>
+            <a class="btn btn-default btn-block" href="#">Register</a>
+            </form>
         </div>
       </div>
     </div>
