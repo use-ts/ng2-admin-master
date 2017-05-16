@@ -23,8 +23,8 @@
             <input type="text" title="Please enter your code" placeholder="1234" required
               [(ngModel)]="verifycode" value="" name="verifycode" id="verifycode" class="form-control">   
 
-              <img ng-style="height:26px;width:50px;" id="codeImg" alt="点击更换" title="点击更换" src="http://10.78.116.122:8000/fire-auth/code.do">
-              <span class="help-block small">Please input the code</span></div>
+              <img ng-style="height:26px;width:50px;" id="codeImg" (click)="onClickImg()" alt="点击更换" title="点击更换" src={{img_src}}>
+              <span class="help-block small">Please input the code1</span></div>
 
             <div class="checkbox"><input icheck type="checkbox" ng-model="remember"
                                          ng-init="remember = true"> Remember login 

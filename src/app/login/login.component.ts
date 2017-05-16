@@ -15,6 +15,8 @@ export class LoginComponent implements OnInit {
     public url = "/fire-auth/login";
     public headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
 
+    public img_src = "http://10.78.116.122:8000/fire-auth/code.do";
+
     constructor(private router:Router, private http: Http) {
 
     }
@@ -25,29 +27,46 @@ export class LoginComponent implements OnInit {
 
 
     onSubmit() {
-
-      // this.router.navigate(['/main/1']);
-
       // let params = new URLSearchParams();
       // params.set('USERNMAE', this.username);
       // params.set('PASSWORD', this.password);
       // params.set('CHECKCODE', this.verifycode);
       // console.log("params = " + params);
 
+      this.router.navigate(['/main/1']);
 
       this.http.post(this.url,{"USERNAME":this.username,
         "PASSWORD":this.password,
         "CHECKCODE":this.verifycode},
-        {headers: this.headers}).subscribe(
-          res=>{
-            console.log(res);
+        {headers: this.headers})
+        .map(res => res.json())
+        .subscribe(
+          data=>{
+            console.log("成功-->登录界面");
+            console.log("res = " + data);
+            console.log("res.Success = "+ data.Success);
+            console.log("res.Datas = "+ JSON.stringify(data.Datas));
+            if(true == data.Success) {
+              this.router.navigate(['/main/1']);
+            }
+
           },
-          err => console.log(err),
-          () => console.log('Register Complete'))
-
-
-
+          err => {
+            console.log("错误");
+            console.log(err);  
+          },
+          () => {
+            console.log("完成");
+            console.log('Login Complete');
+          }
+        );
 
     }
+
+    onClickImg() {
+      console.log("-->onClickImg()")
+      this.img_src = "http://10.78.116.122:8000/fire-auth/code.do";
+    }
+
 
 }
