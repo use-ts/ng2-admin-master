@@ -53,17 +53,35 @@ export class DatatableComponent implements OnInit {
 
   settings = {
     columns: {
-      id: {
-        title: 'ID'
+      property1: {
+        title: '控制器发生时间'
       },
-      name: {
-        title: 'Full Name'
+      property2: {
+        title: '系统收到时间'
       },
-      username: {
-        title: 'User Name'
+      property3: {
+        title: '持续时长'
       },
-      email: {
-        title: 'Email'
+      property4: {
+        title: '处理状态'
+      },
+      property5: {
+        title: '设备类型'
+      },
+      property6: {
+        title: '设备名称'
+      },
+      property7: {
+        title: '设备编号'
+      },
+      property8: {
+        title: '设备位置'
+      },
+      property9: {
+        title: '系统'
+      },
+      property10: {
+        title: '信息描述'
       }
     },
     mode : "inline",
@@ -74,80 +92,266 @@ export class DatatableComponent implements OnInit {
 
   data = [
     {
-      id: 1,
-      name: "Leanne Graham",
-      username: "Bret",
-      email: "Sincere@april.biz"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     },
     {
-      id: 2,
-      name: "Ervin Howell",
-      username: "Antonette",
-      email: "Shanna@melissa.tv"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     },
     {
-      id: 3,
-      name: "Clementine Bauch",
-      username: "Samantha",
-      email: "Nathan@yesenia.net"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     },
     {
-      id: 4,
-      name: "Patricia Lebsack",
-      username: "Karianne",
-      email: "Julianne.OConner@kory.org"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     },
     {
-      id: 5,
-      name: "Chelsey Dietrich",
-      username: "Kamren",
-      email: "Lucio_Hettinger@annie.ca"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     },
     {
-      id: 6,
-      name: "Mrs. Dennis Schulist",
-      username: "Leopoldo_Corkery",
-      email: "Karley_Dach@jasper.info"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     },
     {
-      id: 7,
-      name: "Kurtis Weissnat",
-      username: "Elwyn.Skiles",
-      email: "Telly.Hoeger@billy.biz"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     },
     {
-      id: 8,
-      name: "Nicholas Runolfsdottir V",
-      username: "Maxime_Nienow",
-      email: "Sherwood@rosamond.me"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     },
     {
-      id: 9,
-      name: "Glenna Reichert",
-      username: "Delphine",
-      email: "Chaim_McDermott@dana.io"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     },
     {
-      id: 10,
-      name: "Clementina DuBuque",
-      username: "Moriah.Stanton",
-      email: "Rey.Padberg@karina.biz"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     },
     {
-      id: 11,
-      name: "Nicholas DuBuque",
-      username: "Nicholas.Stanton",
-      email: "Rey.Padberg@rosamond.biz"
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
+    },
+    {
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
+    },
+    {
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
+    },
+    {
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
+    },
+    {
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
+    },
+    {
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
+    },
+    {
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
+    },
+    {
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
+    },
+    {
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
+    },
+    {
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
+    },
+    {
+      property1: "2017/1/21 13:56:23",
+      property2: "2017/1/21 13:57:23",
+      property3: "1分22秒",
+      property4: "未处理",
+      property5: "烟感探测器",
+      property6: "两层烟感",
+      property7: "L2.171",
+      property8: "3号楼402客房",
+      property9: "火灾自动报警系统",
+      property10: "连续报警"
     }
   ];
 
   onDeleteConfirm(event): void {
     console.log("delete function");
-    /*if (window.confirm('Are you sure you want to delete?')) {
+    if (window.confirm('Are you sure you want to delete?')) {
       event.confirm.resolve();
     } else {
       event.confirm.reject();
-    }*/
+    }/**/
 
   }
 

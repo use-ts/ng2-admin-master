@@ -15,7 +15,11 @@ export class LoginComponent implements OnInit {
     public url = "/fire-auth/login";
     public headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
 
-    public img_src = "http://10.78.116.122:8000/fire-auth/code.do";
+    //内网
+    //public img_src = "http://10.78.116.122:8000/fire-auth/code.do";
+    //外网
+    public img_src = "http://115.159.114.116:8082/fire-auth/code.do"; 
+
 
     constructor(private router:Router, private http: Http) {
 
@@ -65,7 +69,7 @@ export class LoginComponent implements OnInit {
 
     onClickImg() {
       console.log("-->onClickImg()")
-      this.img_src = "http://10.78.116.122:8000/fire-auth/code.do";
+      this.img_src = "http://10.78.116.122:8000/fire-auth/code.do"+ Math.random();
     }
 
 

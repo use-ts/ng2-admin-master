@@ -8,6 +8,7 @@ import { Http, Response, URLSearchParams, Headers } from '@angular/http';
 @Component({
   selector: 'app-charts',
   templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
 
@@ -15,7 +16,9 @@ export class DashboardComponent implements OnInit {
   // @Input() dataURL:string="src/mock-data/postlist-mock.json";
   @Input() dataURL:string="src/mock-data/firelist-mock.json";
   public postList:Array<any>;
-
+  //相对地址
+  //public url = "/fire-saas/DeviceEvent/getList";
+  //绝对地址
   public url = "/fire-saas/DeviceEvent/getList";
   public headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
 
@@ -42,6 +45,7 @@ export class DashboardComponent implements OnInit {
       );
 
 
+    //请求SaaS数据
     // this.http.post(this.url,{},
     //     {headers: this.headers})
     //     .map(res => res.json())
@@ -71,5 +75,17 @@ export class DashboardComponent implements OnInit {
     //     );
   
 };
+
+    onClickCell() {
+      console.log("-->onClickCell()");
+      //this.router.navigate(['/main/1']);
+
+      //this.parent.setActiveByPath("tables", this.parent.datatable);
+      //this.parent.changeChildNavStatis("tables", this.parent.datatable);
+
+
+
+
+    }
 
 }

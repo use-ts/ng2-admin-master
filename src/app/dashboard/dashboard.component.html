@@ -20,12 +20,12 @@
     <div class="tab-pane fade in active" id="now">
         <div class="content">
             <div class="content-title">
-                <label class="content-title-title">当前有<b class="number_building"> 2 </b>个楼宇发生了<b class="number_fire"> 10 </b>条火警</label><div class="change-item-state"><button class="change-item-list" ></button><button class="change-item-card"></button></div>
+                <label class="content-title-title">当前有<b class="number_building"> 2 </b>个楼宇发生了<b class="number_fire"> 10 </b>条火警</label><div class="change-item-state"><button class="change-item-list"></button><button class="change-item-card"  (click)="onClickCell()"></button></div>
             </div>
 
             <div class="panel panel-default" *ngFor="let post of postList">
                 <div class="panel-heading">
-                    <img class="panel-title-image" src="arrow-down.png"/>
+                    <img class="panel-title-image" src="/src/img/arrow-down.png"/>
                     <label class="panel-title-hotel">大连希尔顿酒店{{post.cellId}}</label>
                     <label class="panel-title-num-confirm">5</label>
                     <label class="panel-title-confirm">未确认</label>
