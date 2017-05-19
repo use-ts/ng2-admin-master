@@ -1,42 +1,60 @@
-<div class="col-md-offset-5">
-    <ul id="myTab" class="nav nav-tabs center" >
-        <li class="active">
-            <a href="#now" data-toggle="tab">
-                实时火警
-            </a>
-        </li>
-        <li>
-            <a href="#previous" data-toggle="tab">
-                历史火警
-            </a>
-        </li>
-    </ul>
+<div class="top_bar">
+    <div class="col-md-offset-5">
+        <ul id="myTab" class="nav nav-tabs center">
+            <li class="active">
+                <a href="#now" data-toggle="tab">
+                    实时火警
+                </a>
+            </li>
+            <li>
+                <a href="#previous" data-toggle="tab">
+                    历史火警
+                </a>
+            </li>
+        </ul>
+    </div>
 </div>
 
 
 <div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade in active" id="now">   
-            <div class="content">
-                <h3>当前有<b>2</b>个楼宇发生了<b>10</b>条火警</h3>
-                <div class="panel panel-default" *ngFor="let post of postList">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">大连希尔顿酒店{{post.cellId}}</h3>
-                    </div>
-                    <table class="table" *ngFor="let fireDeviceEvent of post.fireDeviceEventList">
-                        <th>3号楼{{post.buildId}}</th>
-                            <tr>
-                            <td>13:56:23{{fireDeviceEvent.createTime}}</td>
-                            <td>未确认{{fireDeviceEvent.confirmFlag}}</td>
-                            <td>402客房西北方向{{fireDeviceEvent.messageTypeId}}</td>
-                            <td>【火灾自动报警系统】烟感探测器{{fireDeviceEvent.messageTypeDetail}}</td>
-                            <td>L2.123{{fireDeviceEvent.eventId}}</td>
-                            </tr>
-                    </table>
-                </div> 
+    <div class="tab-pane fade in active" id="now">
+        <div class="content">
+            <div class="content-title">
+                <label class="content-title-title">当前有<b class="number_building"> 2 </b>个楼宇发生了<b class="number_fire"> 10 </b>条火警</label><div class="change-item-state"><button class="change-item-list" ></button><button class="change-item-card"></button></div>
             </div>
-	</div>
+
+            <div class="panel panel-default" *ngFor="let post of postList">
+                <div class="panel-heading">
+                    <img class="panel-title-image" src="arrow-down.png"/>
+                    <label class="panel-title-hotel">大连希尔顿酒店{{post.cellId}}</label>
+                    <label class="panel-title-num-confirm">5</label>
+                    <label class="panel-title-confirm">未确认</label>
+
+                </div>
+                <table rules="none" class="table" *ngFor="let fireDeviceEvent of post.fireDeviceEventList">
+                    <th class="table-title">3号楼{{post.buildId}}</th>
+                    <tr class="table-body">
+                        <td>13:56:23{{fireDeviceEvent.createTime}}</td>
+                        <td>未确认{{fireDeviceEvent.confirmFlag}}</td>
+                        <td>402客房西北方向{{fireDeviceEvent.messageTypeId}}</td>
+                        <td>【火灾自动报警系统】烟感探测器{{fireDeviceEvent.messageTypeDetail}}</td>
+                        <td>L2.123{{fireDeviceEvent.eventId}}</td>
+
+                    </tr>
+                    <tr class="table-body">
+                        <td>13:56:23{{fireDeviceEvent.createTime}}</td>
+                        <td>未确认{{fireDeviceEvent.confirmFlag}}</td>
+                        <td>402客房西北方向{{fireDeviceEvent.messageTypeId}}</td>
+                        <td>【火灾自动报警系统】烟感探测器{{fireDeviceEvent.messageTypeDetail}}</td>
+                        <td>L2.123{{fireDeviceEvent.eventId}}</td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 
     <div class="tab-pane fade" id="previous">
-		<p>当前有21个楼宇发生了86条火警</p>
-	</div>
+        <p>当前有21个楼宇发生了86条火警</p>
+    </div>
 </div>

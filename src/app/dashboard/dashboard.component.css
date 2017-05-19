@@ -1,0 +1,175 @@
+/*居中*/
+.col-md-offset-5 {
+    margin-left: 42%;
+    margin-right: 42%;
+}
+
+/*底边的虚线*/
+.top_bar {
+    border-bottom: 2px solid #e6e6e6;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.nav-tabs {
+    background-color: #f8f8f8;
+}
+
+.nav-tabs > li.active {
+    border-bottom: 3px solid #45a8ea;
+    margin-bottom: -3px;
+    margin-left: 1px;
+    margin-right: 1px;
+    color: #f8f8f8;
+}
+
+.nav-tabs > li {
+    background-color: #f8f8f8;
+    margin-bottom: -3px;
+    margin-left: 1px;
+    margin-right: 1px;
+    border: 0px;
+    border-bottom: 1px solid #f8f8f8;
+    border-radius: 0;
+}
+
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    background-color: #f8f8f8;
+    color: #454545;
+}
+
+.nav-tabs > li > a {
+    background-color: #f8f8f8;
+    color: #b6b6b6;
+    border: 0px solid transparent;
+    border-radius: 0px 0px 0 0;
+}
+
+/*进入调整列表 实时火警*/
+
+.panel {
+    border-left: 5px solid #d0021b;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 0;
+    background-color: #FFFFFF;
+}
+
+.panel-heading {
+    color: #FFFFFF;
+    background-color: #FFFFFF;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.panel.panel-heading {
+    width: inherit;
+    display: inline;
+    white-space: nowrap;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.panel-title-hotel {
+    width: 200px;
+    font-size: 16px;
+    color: #717171;
+    padding: 5px;
+}
+
+.panel-title-image {
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+}
+
+.panel-title-num-confirm {
+    color: #f53631;
+}
+
+.panel-title-confirm {
+    width: 200px;
+    padding-left: 10px;
+    color: #939393;
+}
+
+.number_building {
+    color: red;
+    font-size: 20px;
+}
+.content-title{
+    width:100%;
+    height: 40px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.content-title-title {
+    font-size: 16px;
+}
+.change-item-state{
+    float: right;
+    background-color: #f8f8f8;
+    height: 40px;
+    width: 120px;
+    padding: 5px;
+}
+
+.change-item-list.active,
+.change-item-list:hover,
+.change-item-card.active,
+.change-item-card:hover
+{
+    background-color: #45a8ea;
+    width: 50px;
+    height: 30px;
+}
+.change-item-card,
+.change-item-list{
+    background-color: #e0e0e0;
+    width: 50px;
+    height: 30px;
+    border: none;
+}
+.change-item-list{
+
+}
+
+
+/*下面都是表格的样式*/
+.table {
+    padding-left: 40px;
+    padding-right: 40px;
+    border: 0px;
+}
+
+.table-title {
+    border: 0px;
+    padding: 10px;
+
+}
+
+.table-title {
+    border: 0px;
+    font-size: 20px;
+    color: #676767;
+}
+
+.table.table-body {
+    border: 0px;
+}
+
+.table > tbody > tr > td {
+    border-top: 0px;
+}
+
+.table {
+    width: 90%;
+    align-self: center;
+    margin: 0 auto;
+}
+
+.table > tbody {
+
+}
