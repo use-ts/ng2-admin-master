@@ -5,6 +5,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 @Component({
   selector: 'app-charts',
   templateUrl: './nav.component.html',
+  styleUrls:['./nav.component.css']
 })
 export class NavComponent implements OnInit {
 

@@ -16,9 +16,9 @@
     </nav>
 </div>-->
 <div id="header">
-  <div class="color-line"></div>
+  <!--<div class="color-line"></div>-->
   <div id="logo" class="light-version">
-    <a routerLink="/"><span> Fire IoT </span></a>
+    <a routerLink="/"><strong id="logo-honeywell">Honeywell</strong><label id="logo-fire">IOT</label></a>
   </div>
 
   <nav role="navigation">
@@ -56,11 +56,12 @@
 
       <li *ngFor="let router of routers" [ngClass]="{active:router.active}">
         <a (click)="setActiveByPath(router.href,'')" *ngIf="router.type">
+          <span><img class="side-menu-icon" src="/src/img/arrow-down.png"></span>
           <span class="nav-label">{{router.name}}</span><span
           [ngClass]="router.active==true?'glyphicon glyphicon-menu-up arrow':'glyphicon glyphicon-menu-down arrow'"></span>
         </a>
         <a (click)="setActiveByPath(router.href,'')" routerLink="{{router.href}}" *ngIf="!router.type">
-          <span class="nav-label">{{router.name}}</span><span class="glyphicon glyphicon-menu-right arrow"></span>
+          <span><img class="side-menu-icon" src="/src/img/arrow-down.png"></span><span class="nav-label">{{router.name}}</span><span class="glyphicon glyphicon-menu-right arrow"></span>
         </a>
         <ul class="nav nav-second-level" *ngIf="router.active">
           <li *ngFor="let route of router.child" (click)="changeChildNavStatis(router.href,route.href)"
