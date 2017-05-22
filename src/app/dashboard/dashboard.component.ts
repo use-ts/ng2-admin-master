@@ -82,6 +82,7 @@ export class DashboardComponent implements OnInit {
 
       //this.parent.setActiveByPath("tables", this.parent.datatable);
       //this.parent.changeChildNavStatis("tables", this.parent.datatable);
+      this.router.navigate(['/detail']);
 
 
 

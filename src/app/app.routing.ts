@@ -1,6 +1,7 @@
 import {Routes, RouterModule} from '@angular/router';
 import {AnalysisComponent} from './module/view.analysis';
 import {LoginComponent} from './login/login.component';
+import { DetailComponent } from './detail/detail.component';
 
 const appRoutes:Routes = [
   {
@@ -10,6 +11,10 @@ const appRoutes:Routes = [
   {
     path: 'content',
     component: AnalysisComponent
+  },
+    {
+    path: 'detail',
+    component: DetailComponent
   },
   {
     path: '**',
