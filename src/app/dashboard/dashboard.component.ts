@@ -26,6 +26,10 @@ export class DashboardComponent implements OnInit {
   //相对地址
   //public url = "/fire-saas/DeviceEvent/getList";
   //绝对地址
+  //火警监控接口
+  //public url = "http://115.159.114.116:8082//fire-saas/DeviceEvent/getRealTimeFireList";
+  
+  //消息详情接口
   public url = "http://115.159.114.116:8082/fire-saas/DeviceEvent/getList";
   public headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
 
@@ -66,7 +70,7 @@ export class DashboardComponent implements OnInit {
             console.log("res = " + data);
             console.log("res.Success = "+ data.Success);
             console.log("res.Datas.tatal = "+ data.Datas.total);
-            //console.log("res.Datas.rows = "+ JSON.stringify(data.Datas.rows));
+            console.log("res.Datas.rows = "+ JSON.stringify(data.Datas.rows));
             this.postList=data.Datas.rows;
             //postList[1].fireDeviceEventList = 
             // [{"eventId":35,"createTime":1494414353000,"eventTakeTime":null,"confirmTime":null,
