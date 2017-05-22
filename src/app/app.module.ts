@@ -15,7 +15,7 @@ import {LoginComponent} from './login/login.component';
 import {DashboardModule} from './dashboard/dashboard.module';
 
 import { PostTableService } from './services/post-table.service';
-import { DetailComponent } from './detail/detail.component';
+// import { DetailComponent } from './detail/detail.component';
 
 
 
@@ -23,8 +23,7 @@ import { DetailComponent } from './detail/detail.component';
   declarations: [
     AppComponent,
     AnalysisComponent,
-    LoginComponent,
-    DetailComponent,
+    LoginComponent
 
   ],
   imports: [

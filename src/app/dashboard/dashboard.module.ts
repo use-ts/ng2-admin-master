@@ -18,6 +18,7 @@ import { PluginComponent } from '../bootstraps/plugin/plugin.component';
 
 import { GaodeMapComponent } from '../charts/map/gaode-map.component';
 import { AmapComponent } from '../charts/map/amap/amap.component';
+import { DetailComponent } from '../detail/detail.component';
 
 
 const tablesRoutes: Routes = [
@@ -31,7 +32,8 @@ const tablesRoutes: Routes = [
            { path: 'pieCharts', component: GaodeMapComponent },
            { path: 'datatable', component: DatatableComponent },
            { path: 'bootstrap-static', component: BootstrapComponent },
-           { path: 'bootstrap-plugin', component: PluginComponent }
+           { path: 'bootstrap-plugin', component: PluginComponent },
+           { path: 'detail', component: DetailComponent }
         ]
     }
 ]
@@ -57,7 +59,8 @@ const tablesRoutes: Routes = [
     BootstrapComponent,
     PluginComponent,
     AmapComponent,
-    GaodeMapComponent
+    GaodeMapComponent,
+    DetailComponent
   ],
   providers: []
 })

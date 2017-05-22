@@ -22,6 +22,7 @@ export class NavComponent implements OnInit {
   public datatable = "";
   public bootstrap = "";
   public plugin = "";
+  public detail = "";
 
   routers = [];
 
@@ -39,6 +40,7 @@ export class NavComponent implements OnInit {
     this.datatable = "/main/"+this.para+"/datatable";
     this.bootstrap = "/main/"+this.para+"/bootstrap-static";
     this.plugin = "/main/"+this.para+"/bootstrap-plugin";
+    this.detail = "/main/"+this.para+"/detail";
 
     this.routers = [
       {

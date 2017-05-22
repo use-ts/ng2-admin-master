@@ -1,3 +1,5 @@
+<div *ngIf="condition1">
+
 <div class="top_bar">
     <div class="container top-nav">
         <div class="row">
@@ -71,3 +73,179 @@
         <p>当前有21个楼宇发生了86条火警</p>
     </div>
 </div>
+
+</div>
+
+
+
+<div *ngIf="condition2">
+<div class="dropdown">
+	<button type="button" class="btn dropdown-toggle" id="dropdownMenu1" 
+			data-toggle="dropdown">
+		3号楼
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+		<li role="presentation" >
+			<a role="menuitem" tabindex="-1" href="#">第一层</a>
+		</li>
+		<li role="presentation">
+			<a role="menuitem" tabindex="-1" href="#">第二层</a>
+		</li>
+        <li role="presentation" >
+			<a role="menuitem" tabindex="-1" href="#">第三层</a>
+		</li>
+		<li role="presentation">
+			<a role="menuitem" tabindex="-1" href="#">第四层</a>
+		</li>
+        <li role="presentation">
+			<a role="menuitem" tabindex="-1" href="#">第五层</a>
+		</li>
+	</ul>
+</div>
+
+
+
+<div class="col-md-offset-6">
+    <img src="/src/img/floor.png" height="500" width="500" alt="项目信息" />
+</div>
+
+<br>
+<br>
+
+<div class="top_bar">
+    <div>
+        <ul id="myTab" class="nav nav-tabs center">
+            <li class="active">
+                <a href="#detail" data-toggle="tab">
+                    火警详情
+                </a>
+            </li>
+            <li>
+                <a href="#project" data-toggle="tab">
+                    项目信息
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<div id="myTabContent" class="tab-content">
+    <div class="tab-pane fade in active" id="detail">
+        <div class="table-responsive">
+          <ng2-smart-table [settings]="settings"  [source]="data"  (deleteConfirm)="onDeleteConfirm($event)"></ng2-smart-table>
+        </div>
+
+    </div>
+
+    <div class="tab-pane fade" id="project">
+        <div class="container">
+            <div class="col-md-12 info-container">
+                <div class="hpanel">
+                    <div class="panel-body float-e-margins panel-body-info">
+                        <div class="row panel-container">
+                            <div class="col-md-2 row-panel-first">
+                                <img src="cinqueterre.jpg" class="img-responsive img-hotel" alt="大连希尔顿酒店" width="100px" height="80px">
+                                <h6 class="panel-item-title"><strong>大连希尔顿酒店</strong></h6>
+                                <small class="panel-item-small-label">酒店位于繁华的商业中心--武林广场东侧，是一家挂牌五星的豪华商务酒店</small>
+                            </div>
+                            <div class="col-md-3 row-panel row-panel-second">
+                                <div class="hpanel">
+                                    <div class="panel-heading panel-heading-title">
+                                        <span><img class="side-menu-icon"
+                                                src="/src/img/arrow-down.png"><strong class="panel-item-detail-title">建筑信息</strong></span>
+                                    </div>
+                                    <div class="panel-body item-panel-body">
+                                        <ul class="list-group">
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">用户地址:&emsp;</small><label class="panel-item-detail-content">天府新区武林路56号</label></span>
+                                            </li>
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">用户类别:&emsp;</small><label class="panel-item-detail-content">酒店 餐饮</label></span>
+                                            </li>
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">建筑级别:&emsp;</small><label class="panel-item-detail-content">12797 m2</label></span>
+                                            </li>
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">施工单位:&emsp;</small><label class="panel-item-detail-content">快科施工公司</label></span>
+                                            </li>
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">建筑物结果:</small><label class="panel-item-detail-content">钢筋</label></span>
+                                            </li>
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label"></small><label class="panel-item-detail-content"></label></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-3 row-panel row-panel-third">
+                                <div class="hpanel">
+                                    <div class="panel-heading panel-heading-title">
+                                        <span><img class="side-menu-icon"
+                                                src="/src/img/arrow-down.png"><strong class="panel-item-detail-title">项目信息</strong></span>
+                                    </div>
+                                    <div class="panel-body item-panel-body">
+                                        <ul class="list-group">
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">项目名称:&emsp;</small><label class="panel-item-detail-content">大连希尔顿酒店1期</label></span>
+                                            </li>
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">项目编号:&emsp;</small><label class="panel-item-detail-content">879798-798</label></span>
+                                            </li>
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">项目事件:&emsp;</small><label class="panel-item-detail-content">2016／6／12-2017／6／11</label></span>
+                                            </li>
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">状态:&emsp;&emsp;&emsp;&emsp;</small><label class="panel-item-detail-content">快到期</label></span>
+                                            </li>
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">服务单位:&emsp;</small><label class="panel-item-detail-content">上海星海维保公司</label></span>
+                                            </li>
+                                            <li class="list-group-item item-panel-list-item">
+                                                <span><small class="panel-item-small-label">所属消防局:</small><label class="panel-item-detail-content">武林消防局</label></span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 row-panel row-panel-fourth">
+                                <div class="hpanel">
+                                    <div class="panel-heading panel-heading-title">
+                                        <span><img class="side-menu-icon"
+                                                src="/src/img/arrow-down.png"><strong class="panel-item-detail-title">联系方式</strong></span>
+                                    </div>
+                                    <table class="table tab panel-item-contract" >
+                                        <tr class="table-item">
+                                            <td class="panel-item-small-label">物业值班人:</td>
+                                            <td class="panel-item-detail-content">高亮</td>
+                                            <td class="panel-item-small-label">联系电话:</td>
+                                            <td class="panel-item-detail-content">18967982768</td>
+                                        </tr>
+                                        <tr lass="table-item no-borders no-part-border">
+                                            <td class="panel-item-small-label">物业值班人:</td>
+                                            <td class="panel-item-detail-content">张晓军</td>
+                                            <td class="panel-item-small-label">联系电话:</td>
+                                            <td class="panel-item-detail-content">18967982768</td>
+                                        </tr>
+                                        <tr lass="table-item no-borders no-part-border">
+                                            <td class="panel-item-small-label">物业值班人:</td>
+                                            <td class="panel-item-detail-content">王红军</td>
+                                            <td class="panel-item-small-label">联系电话:</td>
+                                            <td class="panel-item-detail-content">18967982768</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+

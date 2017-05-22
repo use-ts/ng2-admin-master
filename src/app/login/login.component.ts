@@ -12,7 +12,8 @@ export class LoginComponent implements OnInit {
     public password:string;
     public verifycode:string;
 
-    public url = "/fire-auth/login";
+    //public url = "/fire-auth/login";
+    public url = "http://115.159.114.116:8082/fire-auth/login";
     public headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
 
     //内网
@@ -37,7 +38,7 @@ export class LoginComponent implements OnInit {
       // params.set('CHECKCODE', this.verifycode);
       // console.log("params = " + params);
 
-      this.router.navigate(['/main/1']);
+      //this.router.navigate(['/main/1']);
 
       this.http.post(this.url,{"USERNAME":this.username,
         "PASSWORD":this.password,
@@ -69,7 +70,7 @@ export class LoginComponent implements OnInit {
 
     onClickImg() {
       console.log("-->onClickImg()")
-      this.img_src = "http://10.78.116.122:8000/fire-auth/code.do"+ Math.random();
+      this.img_src = "http://115.159.114.116:8082/fire-auth/code.do"+ Math.random();
     }
 
 
