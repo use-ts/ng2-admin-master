@@ -16,30 +16,44 @@
     </nav>
 </div>-->
 <div id="header">
-  <!--<div class="color-line"></div>-->
-  <div id="logo" class="light-version">
-    <a routerLink="/"><strong id="logo-honeywell">Honeywell</strong><label id="logo-fire">IOT</label></a>
-  </div>
-
-  <nav role="navigation">
-
-    <div class="mobile-menu">
-      <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse"
-              data-target="#mobile-collapse"><i class="fa fa-chevron-down"></i></button>
-      <div class="collapse mobile-navbar" id="mobile-collapse">
-        <ul class="nav navbar-nav">
-          <li><a>Login</a></li>
-          <li><a>Logout</a></li>
-          <li><a>Profile</a></li>
-        </ul>
-      </div>
+    <!--<div class="color-line"></div>-->
+    <div id="logo" class="light-version">
+        <a routerLink="/"><strong id="logo-honeywell">Honeywell</strong><label id="logo-fire">IOT</label></a>
     </div>
-    <div class="navbar-right">
-      <ul class="nav navbar-nav no-borders">
-        <li class="dropdown"><a routerLink="/"> <i class="pe-7s-upload pe-rotate-90"></i> </a></li>
-      </ul>
-    </div>
-  </nav>
+
+    <nav role="navigation">
+
+        <div class="mobile-menu">
+            <button type="button" class="navbar-toggle mobile-menu-toggle" data-toggle="collapse"
+                    data-target="#mobile-collapse"><i class="fa fa-chevron-down"></i></button>
+            <div class="collapse mobile-navbar" id="mobile-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a>Login</a></li>
+                    <li><a>Logout</a></li>
+                    <li><a>Profile</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="navbar-right">
+            <ul class="nav navbar-nav no-borders">
+                <li class="dropdown"><div class="nav-right-time">2017年01月21号 星期三 17：34</div></li>
+                <li class="dropdown"><img src="ss.png" class="img-circle nav-right-icon"></li>
+                <li class="dropdown">
+                    <div class="btn-group nav-right-contract">
+                        <button aria-expanded="false" class="btn btn-info dropdown-toggle nav-right-contract-btn" data-toggle="dropdown">
+                            王五
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu nav-right-contract-list">
+                            <li>12345</li>
+                            <li class="divider"></li>
+                            <li>67890</li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
 </div>
 
 <!--<aside id="menu">
@@ -51,35 +65,36 @@
 </aside>-->
 
 <aside id="menu">
-  <div id="navigation">
-    <ul class="nav" id="side-menu">
+    <div id="navigation">
+        <ul class="nav" id="side-menu">
 
-      <li *ngFor="let router of routers" [ngClass]="{active:router.active}">
-        <a (click)="setActiveByPath(router.href,'')" *ngIf="router.type">
-          <span><img class="side-menu-icon" src="/src/img/arrow-down.png"></span>
-          <span class="nav-label">{{router.name}}</span><span
-          [ngClass]="router.active==true?'glyphicon glyphicon-menu-up arrow':'glyphicon glyphicon-menu-down arrow'"></span>
-        </a>
-        <a (click)="setActiveByPath(router.href,'')" routerLink="{{router.href}}" *ngIf="!router.type">
-          <span><img class="side-menu-icon" src="/src/img/arrow-down.png"></span><span class="nav-label">{{router.name}}</span><span class="glyphicon glyphicon-menu-right arrow"></span>
-        </a>
-        <ul class="nav nav-second-level" *ngIf="router.active">
-          <li *ngFor="let route of router.child" (click)="changeChildNavStatis(router.href,route.href)"
-              [ngClass]="{active:route.active}">
-            <a routerLink="{{route.href}}">{{route.name}}</a>
-          </li>
+            <li *ngFor="let router of routers" [ngClass]="{active:router.active}">
+                <a (click)="setActiveByPath(router.href,'')" *ngIf="router.type">
+                    <span><img class="side-menu-icon" src="/src/img/arrow-down.png"></span>
+                    <span class="nav-label">{{router.name}}</span><span
+                        [ngClass]="router.active==true?'glyphicon glyphicon-menu-up arrow':'glyphicon glyphicon-menu-down arrow'"></span>
+                </a>
+                <a (click)="setActiveByPath(router.href,'')" routerLink="{{router.href}}" *ngIf="!router.type">
+                    <span><img class="side-menu-icon" src="/src/img/arrow-down.png"></span><span class="nav-label">{{router.name}}</span><span
+                        class="glyphicon glyphicon-menu-right arrow"></span>
+                </a>
+                <ul class="nav nav-second-level" *ngIf="router.active">
+                    <li *ngFor="let route of router.child" (click)="changeChildNavStatis(router.href,route.href)"
+                        [ngClass]="{active:route.active}">
+                        <a routerLink="{{route.href}}">{{route.name}}</a>
+                    </li>
+
+                </ul>
+            </li>
+
 
         </ul>
-      </li>
-
-
-    </ul>
-  </div>
+    </div>
 </aside>
 
 <div id=wrapper>
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
 </div>
 

@@ -1,4 +1,4 @@
-.row{
+.row {
     float: none;
     display: block;
     margin-left: auto;
@@ -6,6 +6,7 @@
     width: 18.8%;
     border: 0px;
 }
+
 /*底边的虚线*/
 .top_bar {
     border-bottom: 2px solid #e6e6e6;
@@ -14,6 +15,7 @@
     padding-left: 0;
     padding-right: 0;
 }
+
 .nav-tabs {
     background-color: #f8f8f8;
     margin-bottom: -1px;
@@ -80,12 +82,14 @@
     font-size: 16px;
     color: #717171;
 }
-.panel-title-line{
+
+.panel-title-line {
     width: 1px;
     height: inherit;
     color: #d0d0d0;
     padding: 0 20px;
 }
+
 .panel-title-image {
     width: 30px;
     height: 30px;
@@ -99,11 +103,13 @@
     width: 200px;
     color: #939393;
 }
-.panel-heading-left{
-    width:60%;
+
+.panel-heading-left {
+    width: 60%;
     height: inherit;
 }
-.panel-heading-right{
+
+.panel-heading-right {
     height: inherit;
     width: 20%;
     background-color: #5abb2d;
@@ -113,16 +119,19 @@
     color: red;
     font-size: 20px;
 }
-.content-title{
-    width:100%;
+
+.content-title {
+    width: 100%;
     height: 40px;
     padding: 10px;
     margin-bottom: 10px;
 }
+
 .content-title-title {
     font-size: 16px;
 }
-.change-item-state{
+
+.change-item-state {
     float: right;
     background-color: #f8f8f8;
     height: 40px;
@@ -133,23 +142,21 @@
 .change-item-list.active,
 .change-item-list:hover,
 .change-item-card.active,
-.change-item-card:hover
-{
+.change-item-card:hover {
     border-radius: 0;
     background-color: #45a8ea;
     width: 50px;
     height: 30px;
 }
+
 .change-item-card,
-.change-item-list{
+.change-item-list {
     border-radius: 0;
     background-color: #e0e0e0;
     width: 50px;
     height: 30px;
     border: none;
 }
-
-
 
 /*下面都是表格的样式*/
 .table {
@@ -186,4 +193,40 @@
 
 .table > tbody {
 
+}
+
+.float-num-list {
+    padding: 10px 10px;
+}
+
+#dropdownMenu1 {
+    border: 1px solid #e4e5e7;
+    border-radius: 0px !important;
+    background-color: #f8f8f8;
+    min-width: 100px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#dropdownMenu1.active, #dropdownMenu1:hover, #dropdownMenu1:focus {
+    background-color: #45a8ea;
+    min-width: 100px;
+}
+
+.dropdownMenu1-list {
+    position: absolute;
+    left: 10px;
+    margin-top: -12px;
+    padding: 0px 3px;
+    border-radius: 0px;
+    min-width: 100px;
+    -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, .175);
+    box-shadow: 0 0 0 rgba(0, 0, 0, .175);
+    background-color: #f8f8f8;
+    border: 1px solid #e4e5e7;
+}
+
+.dropdownMenu1-list-item {
+    padding: 5px 0px;
+    background-color: #f8f8f8;
 }
