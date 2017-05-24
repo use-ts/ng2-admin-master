@@ -36,7 +36,7 @@
                 <div class="panel-heading">
                     <div class="panel-heading-left">
                         <img class="panel-title-image" src="/src/img/arrow-down.png"/>
-                        <label class="panel-title-hotel">大连希尔顿酒店{{post.cellId}}</label>
+                        <label class="panel-title-hotel">大连希尔顿酒店{{post.cellName}}</label>
                         <label class="panel-title-line"> | </label>
                         <label class="panel-title-num-confirm">5</label>
                         <label class="panel-title-confirm">未确认</label>
@@ -46,23 +46,16 @@
                    </div>
 
                 </div>
-                <table rules="none" class="table" *ngFor="let fireDeviceEvent of post.fireDeviceEventList">
-                    <th class="table-title">3号楼{{post.buildId}}</th>
-                    <tr class="table-body">
-                        <td>13:56:23{{fireDeviceEvent.createTime}}</td>
-                        <td>未确认{{fireDeviceEvent.confirmFlag}}</td>
-                        <td>402客房西北方向{{fireDeviceEvent.messageTypeId}}</td>
-                        <td>【火灾自动报警系统】烟感探测器{{fireDeviceEvent.messageTypeDetail}}</td>
-                        <td>L2.123{{fireDeviceEvent.eventId}}</td>
-
-                    </tr>
-                    <tr class="table-body">
-                        <td>13:56:23{{fireDeviceEvent.createTime}}</td>
-                        <td>未确认{{fireDeviceEvent.confirmFlag}}</td>
-                        <td>402客房西北方向{{fireDeviceEvent.messageTypeId}}</td>
-                        <td>【火灾自动报警系统】烟感探测器{{fireDeviceEvent.messageTypeDetail}}</td>
-                        <td>L2.123{{fireDeviceEvent.eventId}}</td>
-
+                <table rules="none" class="table" *ngFor="let build of post.buildWithFireEvent">
+                    <th class="table-title">3号楼{{build.buildName}}</th>
+                    <tr class="table-body" *ngFor="let device of build.fireDeviceEventList">
+                        <div *ngFor="let event of device.fireDeviceEventList">
+                            <td>{{event.createTime}}</td>
+                            <td>{{event.confirmFlag}}</td>
+                            <td>{{event.messageTypeId}}</td>
+                            <td>{{event.messageTypeDetail}}</td>
+                            <td>{{event.eventId}}</td>
+                        </div>
                     </tr>
                 </table>
             </div>

@@ -27,10 +27,10 @@ export class DashboardComponent implements OnInit {
   //public url = "/fire-saas/DeviceEvent/getList";
   //绝对地址
   //火警监控接口
-  //public url = "http://115.159.114.116:8082//fire-saas/DeviceEvent/getRealTimeFireList";
+  public url = "http://115.159.114.116:8082//fire-saas/DeviceEvent/getRealTimeFireList";
   
   //消息详情接口
-  public url = "http://115.159.114.116:8082/fire-saas/DeviceEvent/getList";
+  //public url = "http://115.159.114.116:8082/fire-saas/DeviceEvent/getList";
   public headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
 
   constructor (
@@ -49,15 +49,15 @@ export class DashboardComponent implements OnInit {
     this.para = this.parent.para;
 
     //本地Mock的数据
-    this.postTableService.getPostTable(this.dataURL).subscribe(
-        res=>{
-          console.log(res);
-          this.postList=res.rows;
-          console.log("postList =" + this.postList.length);
-        },
-        error => {console.log(error)},
-        () => {}
-      );
+    // this.postTableService.getPostTable(this.dataURL).subscribe(
+    //     res=>{
+    //       console.log(res);
+    //       this.postList=res.rows;
+    //       console.log("postList =" + this.postList.length);
+    //     },
+    //     error => {console.log(error)},
+    //     () => {}
+    //   );
 
 
     //请求SaaS数据
@@ -72,11 +72,8 @@ export class DashboardComponent implements OnInit {
             console.log("res.Datas.tatal = "+ data.Datas.total);
             console.log("res.Datas.rows = "+ JSON.stringify(data.Datas.rows));
             this.postList=data.Datas.rows;
-            //postList[1].fireDeviceEventList = 
-            // [{"eventId":35,"createTime":1494414353000,"eventTakeTime":null,"confirmTime":null,
-            // "confirmFlag":"Y","messageTypeId":1000001,"deviceId":5333,"messageSmallType":"EVT_FIRE",
-            // "messageBigType":"ALM","messageTypeDetail":"火警"}]
-            console.log("postList[1].fireDeviceEventList = "+ JSON.stringify(this.postList[1].fireDeviceEventList));
+            //console.log("postList[1].fireDeviceEventList = "+ JSON.stringify(this.postList[1].fireDeviceEventList));
+
 
           },
           err => {
