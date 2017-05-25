@@ -5,6 +5,7 @@ import { PostTableService } from '../services/post-table.service';
 import { Input} from '@angular/core';
 import { Http, Response, URLSearchParams, Headers } from '@angular/http';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import {$WebSocket, WebSocketSendMode} from 'angular2-websocket/angular2-websocket';
 
 @Component({
   selector: 'app-charts',
@@ -28,11 +29,14 @@ export class DashboardComponent implements OnInit {
   //public url = "/fire-saas/DeviceEvent/getList";
   //绝对地址
   //火警监控接口
-  public url_dashboard = "http://115.159.114.116:8082//fire-saas/DeviceEvent/getRealTimeFireList";
+  public url_dashboard = "http://115.159.114.116:8082/fire-saas/DeviceEvent/getRealTimeFireList";
   
   //消息详情接口
   public url_detail = "http://115.159.114.116:8082/fire-saas/DeviceEvent/getList";
   public headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
+
+  //websocket接受消息
+  public data:any;
 
   constructor (
     private parent: NavComponent,
@@ -40,7 +44,23 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     public postTableService: PostTableService,
     private http: Http
-  ) {}
+  ) {
+    //websocket连接
+    let ws = new $WebSocket("ws://115.159.114.116:8082/fire-saas/websocket");
+    ws.send("listening");
+
+    ws.onOpen( msg=>{
+      console.log("websocket-->ws.onOpen");
+    });
+
+    ws.onMessage( msg=>
+    {
+        this.data = JSON.stringify(msg.data);
+        console.log("websocket-->ws.onMessage" + this.data);
+    });
+  }
+
+
 
   ngOnInit(){
 
@@ -48,18 +68,6 @@ export class DashboardComponent implements OnInit {
     this.condition2 = false;    
     this.parent.setActiveByPath(this.parent.dashboard,"");
     this.para = this.parent.para;
-
-    //本地Mock的数据
-    // this.postTableService.getPostTable(this.dataURL).subscribe(
-    //     res=>{
-    //       console.log(res);
-    //       this.postList=res.rows;
-    //       console.log("postList =" + this.postList.length);
-    //     },
-    //     error => {console.log(error)},
-    //     () => {}
-    //   );
-
 
     //请求SaaS数据，火警监控接口
     this.http.post(this.url_dashboard,{},
@@ -82,6 +90,17 @@ export class DashboardComponent implements OnInit {
             console.log('Login Complete');
           }
         );
+
+    //本地Mock的数据
+    // this.postTableService.getPostTable(this.dataURL).subscribe(
+    //     res=>{
+    //       console.log(res);
+    //       this.postList=res.rows;
+    //       console.log("postList =" + this.postList.length);
+    //     },
+    //     error => {console.log(error)},
+    //     () => {}
+    //   );
   
 };
 
@@ -108,11 +127,9 @@ export class DashboardComponent implements OnInit {
           }
         );
 
-
-
       console.log("-->onClickCell()");
         this.condition1 = false;  
         this.condition2 = true;
-      }
+  }
 
 }
