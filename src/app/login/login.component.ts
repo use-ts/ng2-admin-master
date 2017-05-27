@@ -47,10 +47,10 @@ export class LoginComponent implements OnInit {
         .map(res => res.json())
         .subscribe(
           data=>{
-            console.log("成功-->登录界面");
-            console.log("res = " + data);
-            console.log("res.Success = "+ data.Success);
-            console.log("res.Datas = "+ JSON.stringify(data.Datas));
+            //console.log("成功-->登录界面");
+            //console.log("res = " + data);
+            //console.log("res.Success = "+ data.Success);
+            //console.log("res.Datas = "+ JSON.stringify(data.Datas));
             if(true == data.Success) {
               this.router.navigate(['/main/1']);
             }

@@ -5,7 +5,6 @@ import { PostTableService } from '../services/post-table.service';
 import { Input} from '@angular/core';
 import { Http, Response, URLSearchParams, Headers } from '@angular/http';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
-import {$WebSocket, WebSocketSendMode} from 'angular2-websocket/angular2-websocket';
 
 @Component({
   selector: 'app-charts',
@@ -35,8 +34,6 @@ export class DashboardComponent implements OnInit {
   public url_detail = "http://115.159.114.116:8082/fire-saas/DeviceEvent/getList";
   public headers = new Headers({'Content-Type': 'application/json;charset=utf-8'});
 
-  //websocket接受消息
-  public data:any;
 
   constructor (
     private parent: NavComponent,
@@ -44,21 +41,7 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     public postTableService: PostTableService,
     private http: Http
-  ) {
-    //websocket连接
-    let ws = new $WebSocket("ws://115.159.114.116:8082/fire-saas/websocket");
-    ws.send("listening");
-
-    ws.onOpen( msg=>{
-      console.log("websocket-->ws.onOpen");
-    });
-
-    ws.onMessage( msg=>
-    {
-        this.data = JSON.stringify(msg.data);
-        console.log("websocket-->ws.onMessage" + this.data);
-    });
-  }
+  ) {  }
 
 
 
@@ -78,8 +61,21 @@ export class DashboardComponent implements OnInit {
             console.log("成功-->火警监控");
             console.log("res.Success = "+ data.Success);
             console.log("res.Datas.tatal = "+ data.Datas.total);
-            console.log("res.Datas.rows = "+ JSON.stringify(data.Datas.rows));
+            //console.log("res.Datas.rows = "+ JSON.stringify(data.Datas.rows));
             this.postList_dashboard=data.Datas.rows;
+
+            //监听observable对象
+            this.postTableService.getPostTable("")
+              .subscribe(
+                res=>{
+                  //console.log("监听observable对象:" +res);
+                  console.log("监听observable对象-->res.Datas.rows:" + JSON.stringify(JSON.parse(res).Datas.rows) );
+                  //新数组[0]添加到原来数组头部
+                  this.postList_dashboard.unshift(JSON.parse(res).Datas.rows[0]);            
+                },
+                error => {console.log(error)},
+                () => {}
+      );
           },
           err => {
             console.log("火警监控错误");
@@ -91,16 +87,7 @@ export class DashboardComponent implements OnInit {
           }
         );
 
-    //本地Mock的数据
-    // this.postTableService.getPostTable(this.dataURL).subscribe(
-    //     res=>{
-    //       console.log(res);
-    //       this.postList=res.rows;
-    //       console.log("postList =" + this.postList.length);
-    //     },
-    //     error => {console.log(error)},
-    //     () => {}
-    //   );
+
   
 };
 

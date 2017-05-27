@@ -2,18 +2,40 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions,URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import 'rxjs/add/operator/map';
+import {$WebSocket, WebSocketSendMode} from 'angular2-websocket/angular2-websocket';
+import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Injectable()
 export class PostTableService {
     public delURL: string = "";
     public toEditURL: string = "";
+    public ws: any;
     
-    constructor(public http: Http) { }
+    constructor(public http: Http) {
+    }
 
     public getPostTable(dataURL:string){
-        return this.http.get(dataURL)
-          .map((res:Response) => res.json())
-          .catch((error:any) => Observable.throw(error || 'Server error'));
+        // return this.http.get(dataURL)
+        //   .map((res:Response) => res.json())
+        //   .catch((error:any) => Observable.throw(error || 'Server error'));
+        return Observable.create(observer =>{
+                //创建Webscket
+                this.ws = new $WebSocket("ws://115.159.114.116:8082/fire-saas/websocket");
+                this.ws.onOpen(msg=>{
+                    console.log("websocket-->ws.onOpen");
+                    //observer.next("ws.onOpen");
+                });
+
+                this.ws.onMessage(msg=>
+                {
+                    console.log("websocket-->ws.onMessage");
+                    //console.log("websocket-->ws.onMessage" + JSON.stringify(msg.data));
+                    //console.log("websocket-->ws.onMessage" + msg.data);
+                    observer.next(msg.data);
+                });
+            }
+        )
+
     }
 
     public del(postId: number):Observable<any>{
