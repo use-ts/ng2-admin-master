@@ -184,7 +184,7 @@
                         <td>{{ event.createTime }}</td>
                         <td>2017/1/21{{ event.eventTakeTime }}</td>
                         <td>1分22秒</td>
-                        <td>{{ event.confirmFlag }}</td>
+                        <td>{{ event.confirmFlag=="N"?"未确认":"已确认" }}</td>
                         <td>{{ item.deviceType }}</td>
                         <td>{{ item.deviceLabel }}</td>
                         <td>{{ item.deviceId }}</td>
