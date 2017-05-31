@@ -83,8 +83,8 @@
                         <div class="table-fire-list-div" *ngFor="let device of build.fireDeviceEventList">
                             <tr class="table-item" *ngFor="let event of device.fireDeviceEventList">
                                 <td class="table-fire-list-time">{{event.createTime}}</td>
-                                <td class="table-fire-list-confirmflag">{{event.confirmFlag}}</td>
-                                <td class="table-fire-list-message-type-id">{{event.messageTypeId}}</td>
+                                <td class="table-fire-list-confirmflag">{{event.confirmFlag=="N"?"未确认":"已确认"}}</td>
+                                <td class="table-fire-list-message-type-id">{{event.deviceLabel}}</td>
                                 <td class="table-fire-list-message-type-detail">{{event.messageTypeDetail}}</td>
                                 <td class="table-fire-list-event-id">{{event.eventId}}</td>
                             </tr>
@@ -188,7 +188,7 @@
                         <td>{{ item.deviceType }}</td>
                         <td>{{ item.deviceLabel }}</td>
                         <td>{{ item.deviceId }}</td>
-                        <td>{{ item.buildName }}</td>
+                        <td>{{ item.buildName }}{{ item.zoneName }}</td>
                         <td>{{ event.messageBigType }}</td>
                         <td>{{ event.messageTypeDetail }}</td>
                     </tr>
