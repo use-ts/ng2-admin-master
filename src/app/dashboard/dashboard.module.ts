@@ -1,4 +1,4 @@
-import { Component, OnInit,NgModule } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -18,47 +18,52 @@ import { PluginComponent } from '../bootstraps/plugin/plugin.component';
 
 import { GaodeMapComponent } from '../charts/map/gaode-map.component';
 import { AmapComponent } from '../charts/map/amap/amap.component';
+import { IndoorComponent } from "../indoor/indoor.component";
+import { PopoverModule } from 'ng2-popover'
 
-
-const tablesRoutes: Routes = [
-    {
-        path:'main/:id',
-        component:NavComponent,
-        children: [
-           { path: '', component: DashboardComponent },
-           { path: 'dashboard', component: DashboardComponent },
-           { path: 'lineCharts', component: lineChartsComponent },
-           { path: 'pieCharts', component: GaodeMapComponent },
-           { path: 'datatable', component: DatatableComponent },
-           { path: 'bootstrap-static', component: BootstrapComponent },
-           { path: 'bootstrap-plugin', component: PluginComponent }
-        ]
-    }
+const tablesRoutes:Routes = [
+	{
+		path:'main/:id',
+		component:NavComponent,
+		children:[
+			{path:'', component:DashboardComponent},
+			{path:'dashboard', component:DashboardComponent},
+			{path:'lineCharts', component:lineChartsComponent},
+			{path:'pieCharts', component:GaodeMapComponent},
+			{path:'datatable', component:DatatableComponent},
+			{path:'bootstrap-static', component:BootstrapComponent},
+			{path:'bootstrap-plugin', component:PluginComponent}
+		]
+	}
 ]
 
 
-@NgModule({
-  imports: [
-      FormsModule,
-      CommonModule,
-      RouterModule.forChild(tablesRoutes),
-      ChartsModule,
-      PaginationModule.forRoot(),
-      Ng2SmartTableModule,
-      FileUploadModule
+@NgModule ({
+	imports:[
+		FormsModule,
+		CommonModule,
+		RouterModule.forChild (tablesRoutes),
+		ChartsModule,
+		PaginationModule.forRoot (),
+		Ng2SmartTableModule,
+		FileUploadModule,
+		PopoverModule
 
-  ],
-  declarations: [
-    NavComponent,
-    DashboardComponent,
-    lineChartsComponent,
-    pieChartsComponent,
-    DatatableComponent,
-    BootstrapComponent,
-    PluginComponent,
-    AmapComponent,
-    GaodeMapComponent
-  ],
-  providers: []
+
+	],
+	declarations:[
+		NavComponent,
+		DashboardComponent,
+		lineChartsComponent,
+		pieChartsComponent,
+		DatatableComponent,
+		BootstrapComponent,
+		PluginComponent,
+		AmapComponent,
+		GaodeMapComponent,
+		IndoorComponent
+	],
+	providers:[]
 })
-export class DashboardModule { }
+export class DashboardModule{
+}

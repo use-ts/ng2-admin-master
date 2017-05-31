@@ -24,8 +24,8 @@
         <div class="tab-pane fade in active" id="now">
             <div class="content">
                 <div class="content-title">
-                    <label class="content-title-title">当前有<b class="number_building">5</b>个楼宇发生了<b class="number_fire">
-                        10 </b>条火警</label>
+                    <label class="content-title-title">当前有<b class="number_building">{{cellNmuber}}</b>个楼宇发生了<b class="number_fire">
+                        {{eventNumber}} </b>条火警</label>
                     <div class="btn-group change-item-state" role="group" aria-label="...">
                         <input type="button" class="btn btn-default change-item-list active" src="/src/img/green.png"
                                (click)="onClickCell()">
@@ -112,26 +112,28 @@
         </button>
         <ul class="dropdown-menu dropdownMenu1-list" role="menu">
             <li role="presentation" class="dropdownMenu1-list-item">
-                <a role="menuitem" tabindex="-1" href="#/main/1">第一层 <span class="caret"></span></a>
+                <a role="menuitem" tabindex="-1" (click)="onClickFloor('1')">第一层 <span class="caret"></span></a>
             </li>
             <li role="presentation" class="dropdownMenu1-list-item">
-                <a role="menuitem" tabindex="-1" href="#/main/1">第二层 <span class="caret"></span></a>
+                <a role="menuitem" tabindex="-1" (click)="onClickFloor('2')">第二层 <span class="caret"></span></a>
             </li>
             <li role="presentation" class="dropdownMenu1-list-item">
-                <a role="menuitem" tabindex="-1" href="#/main/1">第三层 <span class="caret"></span></a>
+                <a role="menuitem" tabindex="-1" (click)="onClickFloor('3')">第三层 <span class="caret"></span></a>
             </li>
             <li role="presentation" class="dropdownMenu1-list-item">
-                <a role="menuitem" tabindex="-1" href="#/main/1">第四层 <span class="caret"></span></a>
+                <a role="menuitem" tabindex="-1" (click)="onClickFloor('4')">第四层 <span class="caret"></span></a>
             </li>
             <li role="presentation" class="dropdownMenu1-list-item">
-                <a role="menuitem" tabindex="-1" href="#/main/1">第五层 <span class="caret"></span></a>
+                <a role="menuitem" tabindex="-1" (click)="onClickFloor('5')">第五层 <span class="caret"></span></a>
             </li>
         </ul>
     </div>
 
 
-    <div class="col-md-offset-4">
-        <img src="/src/img/floor.png" height="500" width="500" alt="项目信息"/>
+    <div class="col-md-offset-3 indoor-image-show">
+        <!--<img src="/src/img/floor.png" height="500" width="500" alt="项目信息"/>-->
+        <app-indoor [configurated]="showConfig" [fireItem]='showItem'></app-indoor>
+
     </div>
 
     <br>

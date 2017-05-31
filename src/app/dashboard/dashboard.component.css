@@ -311,4 +311,7 @@
     background-color: transparent;
     border-left: 1px solid #e0e0e0;
 }
-
+.indoor-image-show {
+    width: 500px;
+    height: 500px;
+}

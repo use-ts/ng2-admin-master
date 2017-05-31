@@ -1,0 +1,70 @@
+<div class="content">
+    <!--没有配置的-->
+    <div class="indoor-back-no-config" *ngIf="!configurated">
+    </div>
+
+    <!--配置过的-->
+    <div class="indoor-back-config" *ngIf="configurated">
+        <button class="btn btn-info btn-xs btn-01" [class.selectToShowPop]="'01'===fireItem" [popover]="myPopover"
+                [disabled]="!isShowPop('01')">01
+        </button>
+        <button class="btn btn-info btn-xs btn-02" [class.selectToShowPop]="'02'===fireItem" [popover]="myPopover"
+                [disabled]="!isShowPop('02')">02
+        </button>
+        <button class="btn btn-info btn-xs btn-03" [class.selectToShowPop]="'03'===fireItem" [popover]="myPopover"
+                [disabled]="!isShowPop('03')">03
+        </button>
+        <button class="btn btn-info btn-xs btn-04" [class.selectToShowPop]="'04'===fireItem" [popover]="myPopover"
+                [disabled]="!isShowPop('04')">04
+        </button>
+        <button class="btn btn-info btn-xs btn-05" [class.selectToShowPop]="'05'===fireItem" [popover]="myPopover"
+                [disabled]="!isShowPop('05')">05
+        </button>
+        <button class="btn btn-info btn-xs btn-06" [class.selectToShowPop]="'06'===fireItem" [popover]="myPopover"
+                [disabled]="!isShowPop('06')">06
+        </button>
+        <button class="btn btn-info btn-xs btn-07" [class.selectToShowPop]="'07'===fireItem" [popover]="myPopover"
+                [disabled]="!isShowPop('07')">07
+        </button>
+        <button class="btn btn-info btn-xs btn-08" [class.selectToShowPop]="'08'===fireItem" [popover]="myPopover"
+                [disabled]="!isShowPop('08')">08
+        </button>
+        <button class="btn btn-info btn-xs btn-09" [class.selectToShowPop]="'09'===fireItem" [popover]="myPopover"
+                [disabled]="!isShowPop('09')">09
+        </button>
+        <button class="btn btn-info btn-xs btn-10" [class.selectToShowPop]="'10'===fireItem" [popover]="myPopover"
+                [disabled]="!isShowPop('10')">10
+        </button>
+    </div>
+
+    <!--Popover content -->
+    <popover-content #myPopover placement="bottom" [closeOnClickOutside]="true">
+        <div>
+            <table class="table tab panel-item-contract">
+                <tr class="table-item">
+                    <td class="panel-item-small-label">上报时间:</td>
+                    <td class="panel-item-detail-content">2017／3／4 12：33：43</td>
+                    <td class="panel-item-small-label">设备名称:</td>
+                    <td class="panel-item-detail-content">烟雾传感器</td>
+                </tr>
+                <tr class="table-item">
+                    <td class="panel-item-small-label">持续时间:</td>
+                    <td class="panel-item-detail-content">45秒</td>
+                    <td class="panel-item-small-label">设备编号:</td>
+                    <td class="panel-item-detail-content">L2.123</td>
+                </tr>
+                <tr class="table-item">
+                    <td class="panel-item-small-label">处理状态:</td>
+                    <td class="panel-item-detail-content">未确定</td>
+                </tr>
+                <tr class="table-item">
+                    <td class="panel-item-small-label">位置:</td>
+                    <td class="panel-item-detail-content">一号路3三楼实验室仓库北边</td>
+                </tr>
+            </table>
+        </div>
+    </popover-content>
+
+
+</div>
+
