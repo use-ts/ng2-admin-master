@@ -5,35 +5,35 @@
 
     <!--配置过的-->
     <div class="indoor-back-config" *ngIf="configurated">
-        <button class="btn btn-info btn-xs btn-01" [class.selectToShowPop]="'01'===fireItem" [popover]="myPopover"
-                [disabled]="!isShowPop('01')">01
+        <button class="btn btn-info btn-xs btn-01" [class.selectToShowPop]="isShowPop(1)" [popover]="myPopover"
+                [disabled]="!isShowPop(1)">01
         </button>
-        <button class="btn btn-info btn-xs btn-02" [class.selectToShowPop]="'02'===fireItem" [popover]="myPopover"
-                [disabled]="!isShowPop('02')">02
+        <button class="btn btn-info btn-xs btn-02" [class.selectToShowPop]="isShowPop(2)" [popover]="myPopover"
+                [disabled]="!isShowPop(2)">02
         </button>
-        <button class="btn btn-info btn-xs btn-03" [class.selectToShowPop]="'03'===fireItem" [popover]="myPopover"
-                [disabled]="!isShowPop('03')">03
+        <button class="btn btn-info btn-xs btn-03" [class.selectToShowPop]="isShowPop(3)" [popover]="myPopover"
+                [disabled]="!isShowPop(3)">03
         </button>
-        <button class="btn btn-info btn-xs btn-04" [class.selectToShowPop]="'04'===fireItem" [popover]="myPopover"
-                [disabled]="!isShowPop('04')">04
+        <button class="btn btn-info btn-xs btn-04" [class.selectToShowPop]="isShowPop(4)" [popover]="myPopover"
+                [disabled]="!isShowPop(4)">04
         </button>
-        <button class="btn btn-info btn-xs btn-05" [class.selectToShowPop]="'05'===fireItem" [popover]="myPopover"
-                [disabled]="!isShowPop('05')">05
+        <button class="btn btn-info btn-xs btn-05" [class.selectToShowPop]="isShowPop(5)" [popover]="myPopover"
+                [disabled]="!isShowPop(5)">05
         </button>
-        <button class="btn btn-info btn-xs btn-06" [class.selectToShowPop]="'06'===fireItem" [popover]="myPopover"
-                [disabled]="!isShowPop('06')">06
+        <button class="btn btn-info btn-xs btn-06" [class.selectToShowPop]="isShowPop(6)" [popover]="myPopover"
+                [disabled]="!isShowPop(6)">06
         </button>
-        <button class="btn btn-info btn-xs btn-07" [class.selectToShowPop]="'07'===fireItem" [popover]="myPopover"
-                [disabled]="!isShowPop('07')">07
+        <button class="btn btn-info btn-xs btn-07" [class.selectToShowPop]="isShowPop(7)" [popover]="myPopover"
+                [disabled]="!isShowPop(7)">07
         </button>
-        <button class="btn btn-info btn-xs btn-08" [class.selectToShowPop]="'08'===fireItem" [popover]="myPopover"
-                [disabled]="!isShowPop('08')">08
+        <button class="btn btn-info btn-xs btn-08" [class.selectToShowPop]="isShowPop(8)" [popover]="myPopover"
+                [disabled]="!isShowPop(8)">08
         </button>
-        <button class="btn btn-info btn-xs btn-09" [class.selectToShowPop]="'09'===fireItem" [popover]="myPopover"
-                [disabled]="!isShowPop('09')">09
+        <button class="btn btn-info btn-xs btn-09" [class.selectToShowPop]="isShowPop(9)" [popover]="myPopover"
+                [disabled]="!isShowPop(9)">09
         </button>
-        <button class="btn btn-info btn-xs btn-10" [class.selectToShowPop]="'10'===fireItem" [popover]="myPopover"
-                [disabled]="!isShowPop('10')">10
+        <button class="btn btn-info btn-xs btn-10" [class.selectToShowPop]="isShowPop(10)" [popover]="myPopover"
+                [disabled]="!isShowPop(10)">10
         </button>
     </div>
 
@@ -43,23 +43,23 @@
             <table class="table tab panel-item-contract">
                 <tr class="table-item">
                     <td class="panel-item-small-label">上报时间:</td>
-                    <td class="panel-item-detail-content">2017／3／4 12：33：43</td>
+                    <td class="panel-item-detail-content">{{EventItem.createTime}}</td>
                     <td class="panel-item-small-label">设备名称:</td>
-                    <td class="panel-item-detail-content">烟雾传感器</td>
+                    <td class="panel-item-detail-content">{{EventItem.deviceLabel}}</td>
                 </tr>
                 <tr class="table-item">
                     <td class="panel-item-small-label">持续时间:</td>
-                    <td class="panel-item-detail-content">45秒</td>
+                    <td class="panel-item-detail-content">{{EventItem.durationTime}}</td>
                     <td class="panel-item-small-label">设备编号:</td>
-                    <td class="panel-item-detail-content">L2.123</td>
+                    <td class="panel-item-detail-content">{{EventItem.deviceId}}</td>
                 </tr>
                 <tr class="table-item">
                     <td class="panel-item-small-label">处理状态:</td>
-                    <td class="panel-item-detail-content">未确定</td>
+                    <td class="panel-item-detail-content">{{getConfimStr()}}</td>
                 </tr>
                 <tr class="table-item">
                     <td class="panel-item-small-label">位置:</td>
-                    <td class="panel-item-detail-content">一号路3三楼实验室仓库北边</td>
+                    <td class="panel-item-detail-content">{{EventItem.location}}</td>
                 </tr>
             </table>
         </div>

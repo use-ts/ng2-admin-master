@@ -5,6 +5,7 @@
 
 import { Component, ViewChild, ElementRef, OnInit, HostListener, Input } from "@angular/core";
 import { PopoverContent } from 'ng2-popover';
+import { WebsocketEventItem } from "./WebsocketEventItem";
 @Component ({
 	selector:'app-indoor',
 	templateUrl:'indoor.component.html',
@@ -13,15 +14,20 @@ import { PopoverContent } from 'ng2-popover';
 
 export class IndoorComponent implements OnInit{
 	@Input () configurated:boolean;
-	@Input () fireItem:string;
-	@ViewChild('customPopover') customPopover: PopoverContent;
+	@Input () EventItem:WebsocketEventItem;
 
 	constructor (private el:ElementRef){
 	}
-	isShowPop(item:string){
-		return this.fireItem === item;
+	isShowPop(item:number){
+		return this.EventItem.deviceId === item && this.EventItem.confirmFlag === 'N';
 	}
-
+	getConfimStr(){
+		if(this.EventItem.confirmFlag === 'N'){
+			return "未确认";
+		} else {
+			return '已确认';
+		}
+	}
 	ngOnInit (){
 	}
 

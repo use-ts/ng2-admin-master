@@ -5,6 +5,7 @@ import { PostTableService } from '../services/post-table.service';
 import { Input } from '@angular/core';
 import { Http, Response, URLSearchParams, Headers } from '@angular/http';
 import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { WebsocketEventItem } from "../indoor/WebsocketEventItem";
 
 @Component ({
 	selector:'app-charts',
@@ -20,10 +21,10 @@ export class DashboardComponent implements OnInit{
 	public condition1:boolean;
 	public condition2:boolean;
 	public para = "";
-  //火警楼宇数量
-  public cellNmuber:number;
-  //火警数量
-  public eventNumber:number;
+	//火警楼宇数量
+	public cellNmuber:number;
+	//火警数量
+	public eventNumber:number;
 	// @Input() dataURL:string="src/mock-data/postlist-mock.json";
 	@Input () dataURL:string = "src/mock-data/firelist-mock.json";
 	public postList_dashboard:Array<any>;
@@ -48,6 +49,7 @@ export class DashboardComponent implements OnInit{
 
 	public showConfig:boolean;
 	public showItem:string;
+
 	onClickFloor (floor:string){
 		if (floor==='4'){
 			this.showConfig = true;
@@ -57,6 +59,14 @@ export class DashboardComponent implements OnInit{
 		this.showItem = '05';
 	}
 
+	public eventItem:WebsocketEventItem ={
+		confirmFlag:'N',
+		deviceId:5,
+		createTime:'2017-01-01',
+		location:'南京霍尼韦尔',
+		deviceLabel:'1L2.345',
+		durationTime:'25s'
+	};
 	ngOnInit (){
 
 		this.condition1 = true;
@@ -75,8 +85,8 @@ export class DashboardComponent implements OnInit{
 					console.log ("res.Datas.tatal = " + data.Datas.total);
 					//console.log("res.Datas.rows = "+ JSON.stringify(data.Datas.rows));
 					this.postList_dashboard = data.Datas.rows;
-          this.cellNmuber =  data.Datas.total;
-          this.eventNumber = 100;
+					this.cellNmuber = data.Datas.total;
+					this.eventNumber = 100;
 
 					//监听observable对象
 					this.postTableService.getPostTable ("")
@@ -86,6 +96,13 @@ export class DashboardComponent implements OnInit{
 								console.log ("监听observable对象-->res.Datas.rows:" + JSON.stringify (JSON.parse (res).Datas.rows));
 								//新数组[0]添加到原来数组头部
 								this.postList_dashboard.unshift (JSON.parse (res).Datas.rows[0]);
+
+								data = JSON.parse (res).Datas.rows[0][0];
+								this.eventItem.confirmFlag = data['confirmFlag'];
+								this.eventItem.deviceId  = data['deviceId'];
+								this.eventItem.createTime=data['createTime'];
+								this.eventItem.location = data['cellName']+data['buildName'];
+								this.eventItem.deviceLabel = data['deviceLabel'];
 							},
 							error =>{
 								console.log (error)

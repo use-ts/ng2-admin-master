@@ -50,6 +50,10 @@ t
     background-color: blue;
     position: relative;
 }
+.btn-01.active, .btn-02.active, .btn-03.active, .btn-04.active, .btn-05.active .btn-06.active, .btn-07.active, .btn-08.active, .btn-09.active, .btn-10.active,
+.btn-01:hover, .btn-02:hover, .btn-03:hover, .btn-04:hover, .btn-05:hover .btn-06:hover, .btn-07:hover, .btn-08:hover, .btn-09:hover, .btn-10:hover{
+    border: 0px !important;
+}
 
 .btn-01 {
     left: 50px;
