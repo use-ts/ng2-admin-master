@@ -59,14 +59,118 @@ export class DashboardComponent implements OnInit{
 		this.showItem = '05';
 	}
 
-	public eventItem:WebsocketEventItem ={
-		confirmFlag:'N',
-		deviceId:5,
-		createTime:'2017-01-01',
-		location:'南京霍尼韦尔',
-		deviceLabel:'1L2.345',
-		durationTime:'25s'
-	};
+	public eventItems:Array<WebsocketEventItem> = [
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'N',
+			deviceId:1,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:2,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:3,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'N',
+			deviceId:4,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'N',
+			deviceId:5,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:6,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'N',
+			deviceId:7,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:8,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:9,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'N',
+			deviceId:10,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s'
+		}
+	];
 	ngOnInit (){
 		console.log("Dashboard-->ngOnInit");
 		this.condition1 = true;
@@ -97,12 +201,31 @@ export class DashboardComponent implements OnInit{
 								//新数组[0]添加到原来数组头部
 								this.postList_dashboard.unshift (JSON.parse (res).Datas.rows[0]);
 
-								data = JSON.parse (res).Datas.rows[0][0];
-								this.eventItem.confirmFlag = data['confirmFlag'];
-								this.eventItem.deviceId  = data['deviceId'];
-								this.eventItem.createTime=data['createTime'];
-								this.eventItem.location = data['cellName']+data['buildName'];
-								this.eventItem.deviceLabel = data['deviceLabel'];
+								data = JSON.parse (res).Datas.rows[0];
+								let cellName = data['cellName'];
+								let buildName = data['buildWithFireEvent'][0]['fireDeviceEventList']['buildName'];
+								data = data['buildWithFireEvent'][0]['fireDeviceEventList'][0];
+								console.log ("监听observable对象-->单个火警的消息:" + JSON.stringify (data));
+								let deviceId = data['deviceId'];
+
+								//先用来演示，给了deviceID 列表再去掉
+								if (deviceId>10){
+									let deviceId = 9;
+								}
+								console.log ("监听observable对象-->单个火警：CellName:" + cellName + ' BuildName:' + buildName + ' deviceId:' + deviceId);
+								var eventItem = this.eventItems.find(x=>x.deviceId === deviceId);
+								if (eventItem ===  null){
+									return;
+								} else {
+									eventItem.confirmFlag = data['confirmFlag'];
+									eventItem.deviceId = data['deviceId'];
+									eventItem.createTime = data['createTime'];
+									eventItem.location = cellName + buildName;
+									eventItem.deviceLabel = data['deviceLabel'];
+									eventItem.eventId = data['eventId'];
+									eventItem.eventTakeTime = data['eventTakeTime'];
+									eventItem.confirmTime = data['confirmTime'];
+								}
 							},
 							error =>{
 								console.log (error)

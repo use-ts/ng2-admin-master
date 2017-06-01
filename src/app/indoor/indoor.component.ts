@@ -14,21 +14,38 @@ import { WebsocketEventItem } from "./WebsocketEventItem";
 
 export class IndoorComponent implements OnInit{
 	@Input () configurated:boolean;
-	@Input () EventItem:WebsocketEventItem;
+	@Input () eventItems:Array<WebsocketEventItem>;
+	public EventItem:WebsocketEventItem;
 
 	constructor (private el:ElementRef){
 	}
-	isShowPop(item:number){
-		return this.EventItem.deviceId === item && this.EventItem.confirmFlag === 'N';
+	isShowPop(id:number){
+		var item = this.getItemsByDeviceId(id);
+		if (item === null){
+			return false;
+		}
+		if (item.confirmFlag === 'N')
+		{
+			return true;
+		}
+		return false;
+	}
+	getItemsByDeviceId(id){
+		return this.eventItems.find(x=>x.deviceId === id);
 	}
 	getConfimStr(){
-		if(this.EventItem.confirmFlag === 'N'){
-			return "未确认";
+		if (this.EventItem.confirmFlag === 'N'){
+			return '未确认';
 		} else {
 			return '已确认';
 		}
 	}
+
+	setEventItem(id:number){
+		this.EventItem = this.eventItems.find(x=>x.deviceId === id);
+	}
 	ngOnInit (){
+		this.EventItem =this.eventItems.find(x=>x.deviceId === 1);
 	}
 
 }
