@@ -68,7 +68,7 @@ export class DashboardComponent implements OnInit{
 		durationTime:'25s'
 	};
 	ngOnInit (){
-
+		console.log("Dashboard-->ngOnInit");
 		this.condition1 = true;
 		this.condition2 = false;
 		this.parent.setActiveByPath (this.parent.dashboard, "");
@@ -134,7 +134,7 @@ export class DashboardComponent implements OnInit{
 					console.log ("成功-->消息详情");
 					console.log ("res.Success = " + data.Success);
 					console.log ("res.Datas.tatal = " + data.Datas.total);
-					console.log ("res.Datas.rows = " + JSON.stringify (data.Datas.rows));
+					//console.log ("res.Datas.rows = " + JSON.stringify (data.Datas.rows));
 					this.postList_detail = data.Datas.rows;
 				},
 				err =>{
@@ -150,6 +150,12 @@ export class DashboardComponent implements OnInit{
 		console.log ("-->onClickCell()");
 		this.condition1 = false;
 		this.condition2 = true;
+	}
+
+	onClickBack() {
+		console.log ("-->onClickBack()");
+		this.condition1 = true;
+		this.condition2 = false;
 	}
 
 }
