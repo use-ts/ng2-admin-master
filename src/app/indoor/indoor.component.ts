@@ -85,14 +85,14 @@ export class IndoorComponent implements OnInit{
 
 	ngOnInit (){
 		this.itemState = this.eventItems;
-		this.EventItem = this.eventItems.find (x => x.deviceId===2);
+		this.EventItem = this.eventItems.find (x => x.deviceId===5965);
 		if (this.EventItem===null){
 			this.EventItem = {
 				eventId:0,
 				eventTakeTime:'',
 				confirmTime:'',
 				confirmFlag:'Y',
-				deviceId:2,
+				deviceId:5965,
 				createTime:'2017-01-01',
 				location:'南京霍尼韦尔',
 				deviceLabel:'1L2.345',
