@@ -5,8 +5,8 @@
 
     <!--配置过的-->
     <div class="indoor-back-config" *ngIf="configurated">
-        <button class="btn btn-info btn-xs btn-01" [class.selectToShowPop]="isShowPop(1)" [popover]="myPopover"
-                [disabled]="!isShowPop(1)" (click)="setEventItem(1)">01
+        <button class="btn btn-info btn-xs btn-01" [class.selectToShowPop]="isShowPop(5965)" [popover]="myPopover"
+                [disabled]="!isShowPop(5965)" (click)="setEventItem(5965)" [@itemState]="getItemStatus(5965)" (@itemState.done)="animationDone($event)">5965
         </button>
         <button class="btn btn-info btn-xs btn-02" [class.selectToShowPop]="isShowPop(2)" [popover]="myPopover"
                 [disabled]="!isShowPop(2)" (click)="setEventItem(2)">02

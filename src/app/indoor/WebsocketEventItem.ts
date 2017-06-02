@@ -11,6 +11,4 @@
 	location:string;//地址 cellName+buildName
 	deviceLabel:string;//设备标识
 	durationTime:string;//持续时间
-
-
 }

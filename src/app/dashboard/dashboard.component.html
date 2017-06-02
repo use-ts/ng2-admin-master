@@ -40,15 +40,15 @@
                             <img class="panel-title-image" src="/src/img/arrow-down.png"/>
                             <label class="panel-title-hotel">{{post.cellName}}</label>
                             <label class="panel-title-line"> | </label>
-                            <label class="panel-title-num-confirm">{{post.buildWithFireEvent.length}}</label>
+                            <label class="panel-title-num-confirm">{{post.totalFireEvent}}</label>
                             <label class="panel-title-confirm">未确认</label>
                         </div>
-                        <div class="panel-heading-right">
+                        <div class="panel-heading-right" *ngFor="let pi of post.listPi">
                             <ul class="nav navbar-nav no-borders">
                                 <li class="dropdown panel-heading-right-contract">
                                     <div>
                                         <ul class="list-group panel-heading-right-contract-detail">
-                                            <li class="list-group-item panel-heading-right-contract-name">李晓晓</li>
+                                            <li class="list-group-item panel-heading-right-contract-name">{{pi.userName}}</li>
                                             <li class="list-group-item panel-heading-right-contract-rule">物业值班人</li>
                                         </ul>
                                     </div>
@@ -57,12 +57,12 @@
                                     <button type="button" class="btn dropdown-toggle"
                                             id="panel-heading-right-connect-btn"
                                             data-toggle="dropdown">
-                                        123456789
+                                        {{pi.mobile}}
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu panel-heading-right-connect-list" role="menu">
                                         <li role="presentation" class="panel-heading-right-connect-list-item">
-                                            <a role="menuitem" tabindex="-1" href="#">986338838</a>
+                                            <a role="menuitem" tabindex="-1">986338838</a>
                                         </li>
                                     </ul>
                                 </li>
@@ -84,7 +84,7 @@
                             <tr class="table-item" *ngFor="let event of device.fireDeviceEventList">
                                 <td class="table-fire-list-time">{{event.createTime}}</td>
                                 <td class="table-fire-list-confirmflag">{{event.confirmFlag=="N"?"未确认":"已确认"}}</td>
-                                <td class="table-fire-list-message-type-id">{{event.deviceLabel}}</td>
+                                <td class="table-fire-list-message-type-id">{{device.deviceLabel}}</td>
                                 <td class="table-fire-list-message-type-detail">{{event.messageTypeDetail}}</td>
                                 <td class="table-fire-list-event-id">{{event.eventId}}</td>
                             </tr>
@@ -96,7 +96,7 @@
         </div>
 
         <div class="tab-pane fade" id="previous">
-            <p>当前有21个楼宇发生了86条火警</p>
+            <!--<p>当前有21个楼宇发生了86条火警</p>-->
         </div>
     </div>
 

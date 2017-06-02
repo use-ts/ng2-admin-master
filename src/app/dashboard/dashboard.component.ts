@@ -59,13 +59,13 @@ export class DashboardComponent implements OnInit{
 		this.showItem = '05';
 	}
 
-	public eventItems:Array<WebsocketEventItem> = [
+	public eventItems:Array<any> = [
 		{
 			eventId:0,
 			eventTakeTime:'',
 			confirmTime:'',
 			confirmFlag:'N',
-			deviceId:1,
+			deviceId:5965,
 			createTime:'2017-01-01',
 			location:'南京霍尼韦尔',
 			deviceLabel:'1L2.345',
@@ -187,10 +187,12 @@ export class DashboardComponent implements OnInit{
 					console.log ("成功-->火警监控");
 					console.log ("res.Success = " + data.Success);
 					console.log ("res.Datas.tatal = " + data.Datas.total);
-					//console.log("res.Datas.rows = "+ JSON.stringify(data.Datas.rows));
+					console.log("res.Datas.rows = "+ JSON.stringify(data.Datas));
 					this.postList_dashboard = data.Datas.rows;
 					this.cellNmuber = data.Datas.total;
-					this.eventNumber = 100;
+					this.eventNumber = data.Datas.rows.totalFireEvent;
+
+
 
 					//监听observable对象
 					this.postTableService.getPostTable ("")
@@ -198,34 +200,54 @@ export class DashboardComponent implements OnInit{
 							res =>{
 								//console.log("监听observable对象:" +res);
 								console.log ("监听observable对象-->res.Datas.rows:" + JSON.stringify (JSON.parse (res).Datas.rows));
-								//新数组[0]添加到原来数组头部
-								this.postList_dashboard.unshift (JSON.parse (res).Datas.rows[0]);
+								//新数组[0]添加到原来数组尾部
+								this.postList_dashboard.push(JSON.parse(res).Datas.rows[0]);
 
-								data = JSON.parse (res).Datas.rows[0];
-								let cellName = data['cellName'];
-								let buildName = data['buildWithFireEvent'][0]['fireDeviceEventList']['buildName'];
-								data = data['buildWithFireEvent'][0]['fireDeviceEventList'][0];
-								console.log ("监听observable对象-->单个火警的消息:" + JSON.stringify (data));
-								let deviceId = data['deviceId'];
+								data = JSON.parse(res).Datas.rows[0];
+								let cellName:string = data['cellName'];
+								let buildName = data.buildWithFireEvent[0].fireDeviceEventList.buildName;
 
-								//先用来演示，给了deviceID 列表再去掉
-								if (deviceId>10){
-									let deviceId = 9;
+								//嵌套解析
+								for (let FireData of data.buildWithFireEvent)
+								{
+									for (let fireDeviceEventList of FireData.fireDeviceEventList){
+										for (let fireDeviceEventList02 of fireDeviceEventList.fireDeviceEventList){
+											let deviceId = fireDeviceEventList02.deviceId;
+											for (let eventItem of this.eventItems){
+												if (eventItem.deviceId === deviceId){
+													eventItem.createTime = fireDeviceEventList02['createTime'];
+													eventItem.location = cellName + buildName;
+													eventItem.deviceLabel = fireDeviceEventList02['deviceLabel'];
+													eventItem.durationTime = fireDeviceEventList02['duration'];
+													eventItem.eventId = fireDeviceEventList02['eventId'];
+													eventItem.eventTakeTime = fireDeviceEventList02['eventTakeTime'];
+													eventItem.confirmTime = fireDeviceEventList02['confirmTime'];
+													eventItem.confirmFlag = fireDeviceEventList02['confirmFlag'];
+													console.log ("监听observable对象-->修改后的的eventItem："+JSON.stringify(eventItem));
+													break;
+												}
+											}
+										}
+									}
 								}
-								console.log ("监听observable对象-->单个火警：CellName:" + cellName + ' BuildName:' + buildName + ' deviceId:' + deviceId);
-								var eventItem = this.eventItems.find(x=>x.deviceId === deviceId);
-								if (eventItem ===  null){
-									return;
-								} else {
-									eventItem.confirmFlag = data['confirmFlag'];
-									eventItem.deviceId = data['deviceId'];
-									eventItem.createTime = data['createTime'];
-									eventItem.location = cellName + buildName;
-									eventItem.deviceLabel = data['deviceLabel'];
-									eventItem.eventId = data['eventId'];
-									eventItem.eventTakeTime = data['eventTakeTime'];
-									eventItem.confirmTime = data['confirmTime'];
-								}
+
+
+								// console.log ("监听observable对象-->单个火警：CellName:" + cellName + ' BuildName:' + buildName + ' deviceId:' + deviceId);
+								// // var eventItem = this.eventItems.find(x=>x.deviceId === deviceId);
+								// for (let eventItem of this.eventItems){
+								// 	if (eventItem.deviceId === deviceId){
+								// 		console.log ("监听observable对象-->修改前的的eventItem："+JSON.stringify(eventItem));
+								// 		eventItem.createTime = FireData['createTime'];
+								// 		eventItem.location = cellName + buildName;
+								// 		eventItem.deviceLabel = FireData['deviceLabel'];
+								// 		eventItem.durationTime = FireData['durationTime'];
+								// 		eventItem.eventId = FireData['eventId'];
+								// 		eventItem.eventTakeTime = FireData['eventTakeTime'];
+								// 		eventItem.confirmTime = FireData['confirmTime'];
+								// 		eventItem.confirmFlag = FireData['confirmFlag'];
+								// 		console.log ("监听observable对象-->修改后的的eventItem："+JSON.stringify(eventItem));
+								// 	}
+								// }
 							},
 							error =>{
 								console.log (error)

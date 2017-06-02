@@ -33,6 +33,16 @@ export class PostTableService {
                     //console.log("websocket-->ws.onMessage" + msg.data);
                     observer.next(msg.data);
                 });
+                this.ws.onClose(msg=>
+                {
+                    console.log("websocket-->ws.onClose");
+                    this.ws.reconnect();
+                });
+                this.ws.onError(msg=>
+                {
+                    console.log("websocket-->ws.onError");
+                    this.ws.reconnect();
+                });
             }
         )
 

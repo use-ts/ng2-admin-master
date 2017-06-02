@@ -3,49 +3,105 @@
  */
 
 
-import { Component, ViewChild, ElementRef, OnInit, HostListener, Input } from "@angular/core";
-import { PopoverContent } from 'ng2-popover';
+import {
+	Component, ElementRef, OnInit, Input, trigger, state, style, transition, animate,
+	keyframes
+} from "@angular/core";
 import { WebsocketEventItem } from "./WebsocketEventItem";
 @Component ({
 	selector:'app-indoor',
 	templateUrl:'indoor.component.html',
-	styleUrls:['indoor.component.css']
+	styleUrls:['indoor.component.css'],
+	animations:[
+		trigger('itemState',[
+			state('N', style({
+				backgroundColor:'#eee'
+				})),
+			state('Y', style({
+				backgroundColor:'#eee'
+			})),
+			state('C', style({
+				backgroundColor:'#eee'
+			})),
+			transition('*=>N', [
+				animate(500, keyframes([
+					style({opacity:0}),
+					style({opacity:1})
+
+				]))
+			]),
+			transition('*=>Y', [
+				animate('0.2s 10 ease-out', style({opacity:1}))
+			]),
+			transition('*=>C', [
+				animate('0.2s 10 ease-out', style({opacity:1}))
+			])
+		])
+	]
 })
 
 export class IndoorComponent implements OnInit{
 	@Input () configurated:boolean;
 	@Input () eventItems:Array<WebsocketEventItem>;
+	public itemState:Array<any>;
 	public EventItem:WebsocketEventItem;
+
+	private hidden_01:boolean = false;
 
 	constructor (private el:ElementRef){
 	}
-	isShowPop(id:number){
-		var item = this.getItemsByDeviceId(id);
-		if (item === null){
+
+	isShowPop (id:number){
+		var item = this.getItemsByDeviceId (id);
+		if (item===null){
 			return false;
 		}
-		if (item.confirmFlag === 'N')
-		{
+		if (item.confirmFlag==='N'){
 			return true;
 		}
 		return false;
 	}
-	getItemsByDeviceId(id){
-		return this.eventItems.find(x=>x.deviceId === id);
+
+	getItemStatus(id:number){
+		var item =this.eventItems.find (x => x.deviceId===id);
+		return item.confirmFlag;
 	}
-	getConfimStr(){
-		if (this.EventItem.confirmFlag === 'N'){
+
+	getItemsByDeviceId (id){
+		return this.eventItems.find (x => x.deviceId===id);
+	}
+
+	getConfimStr (){
+		if (this.EventItem.confirmFlag==='N'){
 			return '未确认';
 		} else {
 			return '已确认';
 		}
 	}
 
-	setEventItem(id:number){
-		this.EventItem = this.eventItems.find(x=>x.deviceId === id);
+	setEventItem (id:number){
+		this.EventItem = this.eventItems.find (x => x.deviceId===id);
 	}
+
 	ngOnInit (){
-		this.EventItem =this.eventItems.find(x=>x.deviceId === 1);
+		this.itemState = this.eventItems;
+		this.EventItem = this.eventItems.find (x => x.deviceId===2);
+		if (this.EventItem===null){
+			this.EventItem = {
+				eventId:0,
+				eventTakeTime:'',
+				confirmTime:'',
+				confirmFlag:'Y',
+				deviceId:2,
+				createTime:'2017-01-01',
+				location:'南京霍尼韦尔',
+				deviceLabel:'1L2.345',
+				durationTime:'25s'
+			};
+		}
+	}
+
+	animationDone($event){
 	}
 
 }
