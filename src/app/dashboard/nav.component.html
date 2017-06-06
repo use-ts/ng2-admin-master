@@ -54,21 +54,19 @@
 
             <li *ngFor="let router of routers" [ngClass]="{active:router.active}">
                 <a (click)="setActiveByPath(router.href,'')" *ngIf="router.type">
-                    <span><img class="side-menu-icon" src="/src/img/arrow-down.png"></span>
-                    <span class="nav-label">{{router.name}}</span><span
-                        [ngClass]="router.active==true?'glyphicon glyphicon-menu-up arrow':'glyphicon glyphicon-menu-down arrow'"></span>
+                    <span><img class="side-menu-icon" src="/src/img/navigation_user.png"></span>
+                    <span class="nav-label">{{router.name}}</span>
                 </a>
                 <a (click)="setActiveByPath(router.href,'')" routerLink="{{router.href}}" *ngIf="!router.type">
-                    <span><img class="side-menu-icon" src="/src/img/arrow-down.png"></span><span class="nav-label">{{router.name}}</span><span
-                        class="glyphicon glyphicon-menu-right arrow"></span>
+                    <span><img class="side-menu-icon" src="/src/img/navigation_fire.png"></span>
+                    <span class="nav-label">{{router.name}}</span>
                 </a>
-                <ul class="nav nav-second-level" *ngIf="router.active">
-                    <!--<li *ngFor="let route of router.child" (click)="changeChildNavStatis(router.href,route.href)"
+                <!--<ul class="nav nav-second-level" *ngIf="router.active">
+                    <li *ngFor="let route of router.child" (click)="changeChildNavStatis(router.href,route.href)"
                         [ngClass]="{active:route.active}">
                         <a routerLink="{{route.href}}">{{route.name}}</a>
-                    </li>-->
-
-                </ul>
+                    </li>
+                </ul>-->
             </li>
 
 

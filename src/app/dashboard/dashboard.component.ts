@@ -149,8 +149,9 @@ export class DashboardComponent implements OnInit{
 			durationTime:'25s'
 		}
 	];
+
 	ngOnInit (){
-		console.log("Dashboard-->ngOnInit");
+		console.log ("Dashboard-->ngOnInit");
 		this.condition1 = true;
 		this.condition2 = false;
 		this.parent.setActiveByPath (this.parent.dashboard, "");
@@ -165,11 +166,10 @@ export class DashboardComponent implements OnInit{
 					console.log ("成功-->火警监控");
 					console.log ("res.Success = " + data.Success);
 					console.log ("res.Datas.tatal = " + data.Datas.total);
-					console.log("res.Datas.rows = "+ JSON.stringify(data.Datas));
+					console.log ("res.Datas.rows = " + JSON.stringify (data.Datas));
 					this.postList_dashboard = data.Datas.rows;
 					this.cellNmuber = data.Datas.total;
 					this.eventNumber = data.Datas.rows.totalFireEvent;
-
 
 
 					//监听observable对象
@@ -179,20 +179,19 @@ export class DashboardComponent implements OnInit{
 								//console.log("监听observable对象:" +res);
 								console.log ("监听observable对象-->res.Datas.rows:" + JSON.stringify (JSON.parse (res).Datas.rows));
 								//新数组[0]添加到原来数组尾部
-								this.postList_dashboard.push(JSON.parse(res).Datas.rows[0]);
+								this.postList_dashboard.push (JSON.parse (res).Datas.rows[0]);
 
-								data = JSON.parse(res).Datas.rows[0];
+								data = JSON.parse (res).Datas.rows[0];
 								let cellName:string = data['cellName'];
 								let buildName = data.buildWithFireEvent[0].fireDeviceEventList.buildName;
 
 								//嵌套解析
-								for (let FireData of data.buildWithFireEvent)
-								{
+								for (let FireData of data.buildWithFireEvent){
 									for (let fireDeviceEventList of FireData.fireDeviceEventList){
 										for (let fireDeviceEventList02 of fireDeviceEventList.fireDeviceEventList){
 											let deviceId = fireDeviceEventList02.deviceId;
 											for (let eventItem of this.eventItems){
-												if (eventItem.deviceId === deviceId){
+												if (eventItem.deviceId===deviceId){
 													eventItem.createTime = fireDeviceEventList02['createTime'];
 													eventItem.location = cellName + buildName;
 													eventItem.deviceLabel = fireDeviceEventList02['deviceLabel'];
@@ -201,7 +200,7 @@ export class DashboardComponent implements OnInit{
 													eventItem.eventTakeTime = fireDeviceEventList02['eventTakeTime'];
 													eventItem.confirmTime = fireDeviceEventList02['confirmTime'];
 													eventItem.confirmFlag = fireDeviceEventList02['confirmFlag'];
-													console.log ("监听observable对象-->修改后的的eventItem："+JSON.stringify(eventItem));
+													console.log ("监听observable对象-->修改后的的eventItem：" + JSON.stringify (eventItem));
 													break;
 												}
 											}
@@ -247,7 +246,12 @@ export class DashboardComponent implements OnInit{
 
 	};
 
-	onClickCell (){
+	//视图模式切换
+	onClickView() {
+		console.log ("-->onClickView()");
+	}
+
+	onClickCell() {
 		//请求SaaS数据，消息详情接口
 		this.http.post (this.url_detail, {},
 			{headers:this.headers})
@@ -275,10 +279,14 @@ export class DashboardComponent implements OnInit{
 		this.condition2 = true;
 	}
 
-	onClickBack() {
+	onClickBack (){
 		console.log ("-->onClickBack()");
 		this.condition1 = true;
 		this.condition2 = false;
+	}
+
+	changeItemColor (flag:string){
+		return flag==='N';
 	}
 
 }

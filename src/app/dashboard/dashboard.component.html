@@ -28,9 +28,9 @@
                         {{eventNumber}} </b>条火警</label>
                     <div class="btn-group change-item-state" role="group" aria-label="...">
                         <input type="button" class="btn btn-default change-item-list active" src="/src/img/green.png"
-                               (click)="onClickCell()">
+                               (click)="onClickView()">
                         <input type="button" class="btn btn-default change-item-card" src="/src/img/green.png"
-                               (click)="onClickCell()">
+                               (click)="onClickView()">
                     </div>
                 </div>
 
@@ -66,7 +66,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="dropdown panel-heading-right-more">
+                                <li class="dropdown panel-heading-right-more" (click)="onClickCell()">
                                     <span class="glyphicon glyphicon-option-horizontal"></span>
                                 </li>
                             </ul>
@@ -83,10 +83,12 @@
                         <div class="table-fire-list-div" *ngFor="let device of build.fireDeviceEventList">
                             <tr class="table-item" *ngFor="let event of device.fireDeviceEventList">
                                 <td class="table-fire-list-time">{{event.createTime}}</td>
-                                <td class="table-fire-list-confirmflag">{{event.confirmFlag=="N"?"未确认":"已确认"}}</td>
+                                <td class="table-fire-list-confirmflag" [class.confirm-item-state]="changeItemColor(event.confirmFlag)">
+                                    {{event.confirmFlag=="N"?"未确认":"已确认"}}
+                                </td>
                                 <td class="table-fire-list-message-type-id">{{device.deviceLabel}}</td>
                                 <td class="table-fire-list-message-type-detail">{{device.deviceType}}</td>
-                                <td class="table-fire-list-event-id">{{event.eventId}}</td>
+                                <td class="table-fire-list-event-id">{{device.deviceCode}}</td>
                             </tr>
                         </div>
                         </tbody>

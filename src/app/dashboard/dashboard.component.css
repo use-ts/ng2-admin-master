@@ -243,9 +243,14 @@
 .table-fire-list-div{
     padding: 5px 5px;
 }
-.table-fire-list-time,.table-fire-list-confirmflag, .table-fire-list-message-type-id,.table-fire-list-message-type-detail,.table-fire-list-event-id{
+.table-fire-list-time,.table-fire-list-confirmflag, .table-fire-list-message-type-detail,.table-fire-list-event-id{
     padding-right: 80px;
     padding-top: 10px;
+}
+.table-fire-list-message-type-id{
+    padding-right: 80px;
+    padding-top: 10px;
+    width: 200px
 }
 .panel-heading-right {
     height: inherit;
@@ -314,4 +319,7 @@
 .indoor-image-show {
     width: 500px;
     height: 500px;
+}
+.confirm-item-state{
+    color: red !important;
 }
