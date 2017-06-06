@@ -20,18 +20,18 @@
         </div>
         <div class="navbar-right">
             <ul class="nav navbar-nav no-borders">
-                <li class="dropdown"><div class="nav-right-time">2017年01月21号 星期三 17：34</div></li>
-                <li class="dropdown"><img src="/src/img/username.png" class="img-circle nav-right-icon"></li>
+                <li class="dropdown"><div class="nav-right-time">2017年06月8号 星期四</div></li>
+                <li class="dropdown"><img src="/src/img/username.png"></li>
                 <li class="dropdown">
                     <div class="btn-group nav-right-contract">
                         <button aria-expanded="false" class="btn btn-info dropdown-toggle nav-right-contract-btn" data-toggle="dropdown">
-                            王五
+                            WT
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu nav-right-contract-list">
-                            <li>12345</li>
+                            <li>17089276361</li>
                             <li class="divider"></li>
-                            <li>67890</li>
+                            <li>17099273742</li>
                         </ul>
                     </div>
                 </li>
@@ -54,47 +54,46 @@
 
             <!--<li *ngFor="let router of routers" [ngClass]="{active:router.active}">
                 <a (click)="setActiveByPath(router.href,'')" *ngIf="router.type">
-                    <span><img class="side-menu-icon" src="/src/img/navigation_1.png"></span>
+                    <span><img class="side-menu-icon" src="/src/img/navigation_user.png"></span>
                     <span class="nav-label">{{router.name}}</span>
                 </a>
                 <a (click)="setActiveByPath(router.href,'')" routerLink="{{router.href}}" *ngIf="!router.type">
-                    <span><img class="side-menu-icon" src="/src/img/navigation_2.png"></span>
+                    <span><img class="side-menu-icon" src="/src/img/navigation_fire.png"></span>
                     <span class="nav-label">{{router.name}}</span>
                 </a>
-
                 <ul class="nav nav-second-level" *ngIf="router.active">
                     <li *ngFor="let route of router.child" (click)="changeChildNavStatis(router.href,route.href)"
                         [ngClass]="{active:route.active}">
                         <a routerLink="{{route.href}}">{{route.name}}</a>
                     </li>
                 </ul>
-
             </li>-->
 
             <li [ngClass]="{active:routers[0].active}">
-                <a (click)="setActiveByPath(routers[0].href,'')">
+                <a>
                     <span><img class="side-menu-icon" src="/src/img/navigation_1.png"></span>
                     <span class="nav-label">{{routers[0].name}}</span>
                 </a>
             </li>
             <li [ngClass]="{active:routers[1].active}">
-                <a (click)="setActiveByPath(router[1].href,'')" routerLink="{{routers[1].href}}">
+                <a>
                     <span><img class="side-menu-icon" src="/src/img/navigation_2.png"></span>
                     <span class="nav-label">{{routers[1].name}}</span>
                 </a>
             </li>
             <li [ngClass]="{active:routers[2].active}">
-                <a (click)="setActiveByPath(routers[2].href,'')">
+                <a>
                     <span><img class="side-menu-icon" src="/src/img/navigation_3.png"></span>
                     <span class="nav-label">{{routers[2].name}}</span>
                 </a>
             </li>
             <li [ngClass]="{active:routers[3].active}">
-                <a (click)="setActiveByPath(routers[3].href,'')">
+                <a>
                     <span><img class="side-menu-icon" src="/src/img/navigation_4.png"></span>
                     <span class="nav-label">{{routers[3].name}}</span>
                 </a>
-            </li>
+             </li>
+
 
 
         </ul>

@@ -221,14 +221,15 @@ export class DashboardComponent implements OnInit{
 									for (let FireData of data.buildWithFireEvent){
 										for (let fireDeviceEventList of FireData.fireDeviceEventList){
 											let deviceCode = fireDeviceEventList.deviceCode;
+											let deviceLabel = fireDeviceEventList.deviceLabel;
 											console.log('the device code :'+deviceCode);
 											for (let fireDeviceEventList02 of fireDeviceEventList.fireDeviceEventList){
 												let deviceId = fireDeviceEventList02.deviceId;
 												for (let eventItem of this.eventItems){
 													if (eventItem.deviceId===deviceId){
 														eventItem.createTime = fireDeviceEventList02['createTime'];
-														eventItem.location = cellName + buildName;
-														eventItem.deviceLabel = fireDeviceEventList02['deviceLabel'];
+														eventItem.deviceLabel = deviceLabel;
+														eventItem.location = cellName + eventItem.deviceLabel;
 														eventItem.durationTime = fireDeviceEventList02['duration'];
 														eventItem.eventId = fireDeviceEventList02['eventId'];
 														eventItem.eventTakeTime = fireDeviceEventList02['eventTakeTime'];

@@ -246,6 +246,7 @@
 .table-fire-list-time,.table-fire-list-confirmflag, .table-fire-list-message-type-id,.table-fire-list-message-type-detail,.table-fire-list-event-id{
     padding-right: 80px;
     padding-top: 10px;
+    width:200px
 }
 .panel-heading-right {
     height: inherit;

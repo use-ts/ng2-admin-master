@@ -41,8 +41,14 @@ t
     vertical-align: middle;
     border: 1px solid transparent !important;
 }
-.selectToShowPop{
+.show_state_01{
     background-color: red !important;
+}
+.show_state_02{
+    background-color: orange !important;
+}
+.show_state_03{
+    background-color: blue !important;
 }
 .btn-01, .btn-02, .btn-03, .btn-04, .btn-05, .btn-06, .btn-07, .btn-08, .btn-09, .btn-10 {
     border: 0px !important;

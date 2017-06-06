@@ -52,14 +52,40 @@ export class IndoorComponent implements OnInit{
 	}
 
 	isShowPop (id:number){
-		var item = this.getItemsByDeviceId (id);
-		if (item===null){
-			return false;
-		}
-		if (item.confirmFlag==='N'){
+		var state = this.getItemsStateById(id);
+		if (state==='N' || state==='A'){
 			return true;
 		}
 		return false;
+	}
+
+	//状态1
+	isState_01(id:number){
+		var state = this.getItemsStateById(id);
+		if (state == 'N'){
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	//状态2
+	isState_02(id:number){
+		var state = this.getItemsStateById(id);
+		if (state == 'A'){
+			return true;
+		} else {
+			return false;
+		}
+	}
+	//状态3
+	isState_03(id:number){
+		var state = this.getItemsStateById(id);
+		if (state == 'R' || state == 'C'){
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	getItemStatus(id:number){
@@ -69,6 +95,14 @@ export class IndoorComponent implements OnInit{
 
 	getItemsByDeviceId (id){
 		return this.eventItems.find (x => x.deviceId===id);
+	}
+	//通过ID获取对应Item的状态
+	getItemsStateById(id:number){
+		var item = this.getItemsByDeviceId (id);
+		if (item===null){
+			return "";
+		}
+		return item.confirmFlag;
 	}
 
 	getConfimStr (){
@@ -92,16 +126,15 @@ export class IndoorComponent implements OnInit{
 				eventTakeTime:'',
 				confirmTime:'',
 				confirmFlag:'Y',
-				deviceId:5965,
+				deviceId:5999,
 				createTime:'2017-01-01',
 				location:'南京霍尼韦尔',
 				deviceLabel:'1L2.345',
-				durationTime:'25s'
+				durationTime:'25s',
+				diviceCode:'G64N1L2D4'
 			};
 		}
 	}
 
-	animationDone($event){
-	}
 
 }
