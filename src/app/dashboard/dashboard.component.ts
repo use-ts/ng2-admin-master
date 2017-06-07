@@ -71,7 +71,7 @@ export class DashboardComponent implements OnInit{
 			location:'南京霍尼韦尔',
 			deviceLabel:'1L2.345',
 			durationTime:'25s',
-			diviceCode:''
+			diviceCode:'G64N1L1D1'
 		},
 		{
 			eventId:0,
@@ -83,7 +83,7 @@ export class DashboardComponent implements OnInit{
 			location:'南京霍尼韦尔',
 			deviceLabel:'1L2.345',
 			durationTime:'25s',
-			diviceCode:''
+			diviceCode:'G64N1L1D2'
 		},
 		{
 			eventId:0,
@@ -95,7 +95,7 @@ export class DashboardComponent implements OnInit{
 			location:'南京霍尼韦尔',
 			deviceLabel:'1L2.345',
 			durationTime:'25s',
-			diviceCode:''
+			diviceCode:'G64N1L1D3'
 		},
 		{
 			eventId:0,
@@ -107,7 +107,7 @@ export class DashboardComponent implements OnInit{
 			location:'南京霍尼韦尔',
 			deviceLabel:'1L2.345',
 			durationTime:'25s',
-			diviceCode:''
+			diviceCode:'G64N1L1D4'
 		},
 		{
 			eventId:0,
@@ -119,7 +119,7 @@ export class DashboardComponent implements OnInit{
 			location:'南京霍尼韦尔',
 			deviceLabel:'1L2.345',
 			durationTime:'25s',
-			diviceCode:''
+			diviceCode:'G64N1L2D1'
 		},
 		{
 			eventId:0,
@@ -131,7 +131,7 @@ export class DashboardComponent implements OnInit{
 			location:'南京霍尼韦尔',
 			deviceLabel:'1L2.345',
 			durationTime:'25s',
-			diviceCode:''
+			diviceCode:'G64N1L2D2'
 		},
 		{
 			eventId:0,
@@ -143,7 +143,7 @@ export class DashboardComponent implements OnInit{
 			location:'南京霍尼韦尔',
 			deviceLabel:'1L2.345',
 			durationTime:'25s',
-			diviceCode:''
+			diviceCode:'G64N1L2D3'
 		},
 		{
 			eventId:0,
@@ -158,6 +158,7 @@ export class DashboardComponent implements OnInit{
 			diviceCode:'G64N1L2D4'
 		}
 	];
+
 
 	ngOnInit (){
 		console.log ("Dashboard-->ngOnInit");
@@ -203,20 +204,19 @@ export class DashboardComponent implements OnInit{
 									//修改后的数据
 									let deviceCode = tempData.deviceCode;
 									let confirmFlag = tempData.confirmFlag;
-									console.log('收到新的 ConfirmFlag: deviceCode : '+deviceCode+"  confirmFlag :"+confirmFlag);
+									console.log('监听observable对象-->修改 ConfirmFlag: deviceCode : '+deviceCode+"  confirmFlag :"+confirmFlag);
 									//CR：用户按下复位键清除，重新刷新界面
-									//A:用户在设备上按下确认按键
+
+									for (let eventItem of this.eventItems){
+										if (eventItem.diviceCode===deviceCode){
+											eventItem.confirmFlag = confirmFlag;
+											console.log ("监听observable对象-->修改成功 ConfirmFlag：deviceCode :"+deviceCode+ "  confirmFlag :" + eventItem.confirmFlag);
+										}
+									}
 									if(confirmFlag==='C'||confirmFlag==='R'||confirmFlag==='A') {
 										console.log ("用户按下复位键清除，重新刷新界面");
 										disposable.unsubscribe();
 										this.getFireData();
-									}
-									
-									for (let eventItem of this.eventItems){
-										if (eventItem.diviceCode===deviceCode){
-											eventItem.confirmFlag = confirmFlag;
-											console.log ("监听observable对象-->收到新的 ConfirmFlag：" + JSON.stringify (eventItem));
-										}
 									}
 								} else {
 									//先不加到列表里
@@ -234,7 +234,7 @@ export class DashboardComponent implements OnInit{
 										for (let fireDeviceEventList of FireData.fireDeviceEventList){
 											let deviceCode = fireDeviceEventList.deviceCode;
 											let deviceLabel = fireDeviceEventList.deviceLabel;
-											console.log('the device code :'+deviceCode);
+											console.log('监听observable对象-->收到新的 Event事件 ：the device code :'+deviceCode);
 											for (let fireDeviceEventList02 of fireDeviceEventList.fireDeviceEventList){
 												let deviceId = fireDeviceEventList02.deviceId;
 												for (let eventItem of this.eventItems){
@@ -248,7 +248,7 @@ export class DashboardComponent implements OnInit{
 														eventItem.confirmTime = fireDeviceEventList02['confirmTime'];
 														eventItem.confirmFlag = fireDeviceEventList02['confirmFlag'];
 														eventItem.diviceCode = deviceCode;
-														console.log ("监听observable对象-->修改后的的eventItem：" + JSON.stringify (eventItem));
+														console.log ("监听observable对象-->收到新的 Event事件： 修改后的的eventItem：the device code : "+deviceCode + " deviceID : "+ deviceId);
 														break;
 													}
 												}
