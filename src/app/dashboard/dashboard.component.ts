@@ -20,6 +20,7 @@ export class DashboardComponent implements OnInit{
 
 	public condition1:boolean;
 	public condition2:boolean;
+	public isBlank:boolean;
 	public para = "";
 	//火警楼宇数量
 	public cellNmuber:number;
@@ -181,6 +182,11 @@ export class DashboardComponent implements OnInit{
 					console.log ("res.Datas.rows = " + JSON.stringify (data.Datas));
 					this.postList_dashboard = data.Datas.rows;
 					this.cellNmuber = data.Datas.total;
+					if(this.cellNmuber === 0) {
+						this.isBlank = true;
+					}else{
+						this.isBlank = false;
+					}
 					this.eventNumber = data.Datas.rows.totalFireEvent;
 					//监听observable对象
 					let disposable = this.postTableService.getPostTable ("")
@@ -199,7 +205,8 @@ export class DashboardComponent implements OnInit{
 									let confirmFlag = tempData.confirmFlag;
 									console.log('收到新的 ConfirmFlag: deviceCode : '+deviceCode+"  confirmFlag :"+confirmFlag);
 									//CR：用户按下复位键清除，重新刷新界面
-									if(confirmFlag==='C'||confirmFlag==='R') {
+									//A:用户在设备上按下确认按键
+									if(confirmFlag==='C'||confirmFlag==='R'||confirmFlag==='A') {
 										console.log ("用户按下复位键清除，重新刷新界面");
 										disposable.unsubscribe();
 										this.getFireData();
@@ -212,7 +219,12 @@ export class DashboardComponent implements OnInit{
 										}
 									}
 								} else {
-									this.postList_dashboard.push (JSON.parse (res).Datas.rows[0]);
+									//先不加到列表里
+									//this.postList_dashboard.push (JSON.parse (res).Datas.rows[0]);
+									console.log ("有新数据上报，重新刷新界面");
+									disposable.unsubscribe();
+									this.getFireData();
+
 									data = JSON.parse (res).Datas.rows[0];
 									let cellName:string = data['cellName'];
 									let buildName = data.buildWithFireEvent[0].fireDeviceEventList.buildName;
@@ -318,7 +330,9 @@ export class DashboardComponent implements OnInit{
 	}
 
 	public changeItemColor(flag:string):boolean {
-		return flag==='N';
+		if(flag==='N')
+			return true;
+		else return false;
 	}
 
 }

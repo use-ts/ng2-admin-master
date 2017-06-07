@@ -316,6 +316,9 @@
     width: 500px;
     height: 500px;
 }
-.confirm-item-state{
+.confirm-item-state-red{
     color: red !important;
+}
+.confirm-item-state-orange{
+    color: orange !important;
 }

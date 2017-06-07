@@ -25,13 +25,17 @@
             <div class="content">
                 <div class="content-title">
                     <label class="content-title-title">当前有<b class="number_building">{{cellNmuber}}</b>个楼宇发生了<b class="number_fire">
-                        {{eventNumber}} </b>条火警</label>
+                        {{eventNumber}} </b>火警</label>
                     <!--<div class="btn-group change-item-state" role="group" aria-label="...">
                         <input type="button" class="btn btn-default change-item-list active" src="/src/img/green.png"
                                (click)="onClickView()">
                         <input type="button" class="btn btn-default change-item-card" src="/src/img/green.png"
                                (click)="onClickView()">
                     </div>-->
+                </div>
+
+                <div class="text-center" *ngIf="isBlank">
+                    <img src="/src/img/noMessage.png" />
                 </div>
 
                 <div class="panel panel-default panel-fire" *ngFor="let post of postList_dashboard">
@@ -83,12 +87,13 @@
                         <div class="table-fire-list-div" *ngFor="let device of build.fireDeviceEventList">
                             <tr class="table-item" *ngFor="let event of device.fireDeviceEventList">
                                 <td class="table-fire-list-time">{{event.createTime}}</td>
-                                <td class="table-fire-list-confirmflag" [class.confirm-item-state]="changeItemColor(event.confirmFlag)">
+                                <td class="table-fire-list-confirmflag" [class.confirm-item-state-red]="changeItemColor(event.confirmFlag)"
+                                [class.confirm-item-state-orange]="!changeItemColor(event.confirmFlag)">
                                     {{event.confirmFlag==="N"?"未确认":"已确认"}}
                                 </td>
                                 <td class="table-fire-list-message-type-id">{{device.deviceLabel}}</td>
                                 <td class="table-fire-list-message-type-detail">{{device.deviceType}}</td>
-                                <td class="table-fire-list-event-id">{{event.eventId}}</td>
+                                <td class="table-fire-list-event-id">{{device.deviceCode}}</td>
                             </tr>
                         </div>
                         </tbody>

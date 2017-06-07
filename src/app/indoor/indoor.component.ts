@@ -56,7 +56,7 @@ export class IndoorComponent implements OnInit{
 		if (state==='N' || state==='A'){
 			return true;
 		}
-		return false;
+		return true;
 	}
 
 	//状态1
