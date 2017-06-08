@@ -45,14 +45,14 @@
                             <label class="panel-title-hotel">{{post.cellName}}</label>
                             <label class="panel-title-line"> | </label>
                             <label class="panel-title-num-confirm">{{post.totalFireEvent}}</label>
-                            <label class="panel-title-confirm">未确认</label>
+                            <label class="panel-title-confirm">条火警</label>
                         </div>
                         <div class="panel-heading-right" *ngFor="let pi of post.listPi">
                             <ul class="nav navbar-nav no-borders">
                                 <li class="dropdown panel-heading-right-contract">
                                     <div>
                                         <ul class="list-group panel-heading-right-contract-detail">
-                                            <li class="list-group-item panel-heading-right-contract-name">{{pi.userName}}</li>
+                                            <li class="list-group-item panel-heading-right-contract-name">王涛{{pi.userName}}</li>
                                             <li class="list-group-item panel-heading-right-contract-rule">物业值班人</li>
                                         </ul>
                                     </div>
@@ -61,7 +61,7 @@
                                     <button type="button" class="btn dropdown-toggle"
                                             id="panel-heading-right-connect-btn"
                                             data-toggle="dropdown">
-                                        {{pi.mobile}}
+                                        13861{{pi.mobile}}
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu panel-heading-right-connect-list" role="menu">
@@ -200,7 +200,7 @@
                         <td>{{ item.deviceId }}</td>
                         <td>{{ item.buildName }}{{ item.zoneName }}</td>
                         <td>{{ event.messageBigType }}</td>
-                        <td>{{ event.messageTypeDetail }}</td>
+                        <td>{{ item.deviceCode }}</td>
                     </tr>
                     </tbody>
                 </table>
