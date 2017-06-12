@@ -217,6 +217,8 @@ export class DashboardComponent implements OnInit{
 										console.log ("用户按下复位键清除，重新刷新界面");
 										disposable.unsubscribe();
 										this.getFireData();
+										//实时更新列表状态
+										this.getFireDataDetail();
 									}
 								} else {
 									//先不加到列表里
@@ -224,6 +226,8 @@ export class DashboardComponent implements OnInit{
 									console.log ("有新数据上报，重新刷新界面");
 									disposable.unsubscribe();
 									this.getFireData();
+									//实时更新列表状态
+									this.getFireDataDetail();
 
 									data = JSON.parse (res).Datas.rows[0];
 									let cellName:string = data['cellName'];
@@ -255,24 +259,7 @@ export class DashboardComponent implements OnInit{
 											}
 										}
 									}
-								}
-								
-								// console.log ("监听observable对象-->单个火警：CellName:" + cellName + ' BuildName:' + buildName + ' deviceId:' + deviceId);
-								// // var eventItem = this.eventItems.find(x=>x.deviceId === deviceId);
-								// for (let eventItem of this.eventItems){
-								// 	if (eventItem.deviceId === deviceId){
-								// 		console.log ("监听observable对象-->修改前的的eventItem："+JSON.stringify(eventItem));
-								// 		eventItem.createTime = FireData['createTime'];
-								// 		eventItem.location = cellName + buildName;
-								// 		eventItem.deviceLabel = FireData['deviceLabel'];
-								// 		eventItem.durationTime = FireData['durationTime'];
-								// 		eventItem.eventId = FireData['eventId'];
-								// 		eventItem.eventTakeTime = FireData['eventTakeTime'];
-								// 		eventItem.confirmTime = FireData['confirmTime'];
-								// 		eventItem.confirmFlag = FireData['confirmFlag'];
-								// 		console.log ("监听observable对象-->修改后的的eventItem："+JSON.stringify(eventItem));
-								// 	}
-								// }
+								}								
 							},
 							error =>{
 								console.log (error)
@@ -295,9 +282,9 @@ export class DashboardComponent implements OnInit{
 		console.log ("-->onClickView()");
 	}
 
-	public onClickCell():void {
-		//请求SaaS数据，消息详情接口
-		this.http.post (this.url_detail, {},
+	//请求SaaS数据，消息详情接口
+	public getFireDataDetail():void {
+		this.http.post (this.url_detail, {"confirmFlag":["N","A"]},
 			{headers:this.headers})
 			.map (res => res.json ())
 			.subscribe (
@@ -317,7 +304,11 @@ export class DashboardComponent implements OnInit{
 					console.log ('Login Complete');
 				}
 			);
+	} 
 
+	public onClickCell():void {
+		//请求SaaS数据，消息详情接口
+		this.getFireDataDetail();
 		console.log ("-->onClickCell()");
 		this.condition1 = false;
 		this.condition2 = true;
