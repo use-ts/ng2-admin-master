@@ -17,7 +17,7 @@ export class lineChartsComponent implements OnInit {
     ) {}
 
     ngOnInit(){
-        this.parent.setActiveByPath("charts",this.parent.lineCharts);
+        // this.parent.setActiveByPath("charts",this.parent.lineCharts);
     };
 
 

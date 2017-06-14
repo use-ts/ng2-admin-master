@@ -69,7 +69,7 @@ export class PluginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.parent.setActiveByPath("bootstrap", this.parent.plugin);
+    // this.parent.setActiveByPath("bootstrap", this.parent.plugin);
 
     $("#file-1").fileinput({
       uploadUrl: '#', // you must set a valid URL here else you will get an error

@@ -164,7 +164,7 @@ export class DashboardComponent implements OnInit{
 		console.log ("Dashboard-->ngOnInit");
 		this.condition1 = true;
 		this.condition2 = false;
-		this.parent.setActiveByPath (this.parent.dashboard, "");
+		// this.parent.setActiveByPath (this.parent.dashboard, "");
 		this.para = this.parent.para;
 		//请求SaaS数据，火警监控接口
 		this.getFireData();

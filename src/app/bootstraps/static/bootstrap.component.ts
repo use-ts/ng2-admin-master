@@ -17,7 +17,7 @@ export class BootstrapComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.parent.setActiveByPath("bootstrap", this.parent.bootstrap);
+    // this.parent.setActiveByPath("bootstrap", this.parent.bootstrap);
 
   };
 

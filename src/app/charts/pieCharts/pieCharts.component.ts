@@ -19,7 +19,7 @@ export class pieChartsComponent implements OnInit {
     ) {}
 
     ngOnInit(){
-        this.parent.setActiveByPath("charts",this.parent.pieCharts);
+        // this.parent.setActiveByPath("charts",this.parent.pieCharts);
 
       $("#btn").click(function () {
         alert("123");

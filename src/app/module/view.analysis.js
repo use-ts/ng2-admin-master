@@ -20,7 +20,7 @@ var AnalysisComponent = (function () {
         this.router = router;
     }
     AnalysisComponent.prototype.ngOnInit = function () {
-        this.parent.setActiveByPath(this.parent.analysis);
+        // this.parent.setActiveByPath(this.parent.analysis);
     };
     ;
     AnalysisComponent = __decorate([

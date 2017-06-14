@@ -34,7 +34,7 @@ export class DatatableComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.parent.setActiveByPath("tables", this.parent.datatable);
+    // this.parent.setActiveByPath("tables", this.parent.datatable);
 
   };
   public totalItems: number = 64;

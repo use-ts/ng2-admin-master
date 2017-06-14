@@ -70,31 +70,29 @@
             </li>-->
 
             <li [ngClass]="{active:routers[0].active}">
-                <a>
+                <a (click)="setActiveByPath(routers[0].href,'')" routerLink="{{routers[0].href}}">
                     <span><img class="side-menu-icon" src="/src/img/navigation_1.png"></span>
                     <span class="nav-label">{{routers[0].name}}</span>
                 </a>
             </li>
             <li [ngClass]="{active:routers[1].active}">
-                <a>
+                <a (click)="setActiveByPath(routers[1].href,'')" routerLink="{{routers[1].href}}">
                     <span><img class="side-menu-icon" src="/src/img/navigation_2.png"></span>
                     <span class="nav-label">{{routers[1].name}}</span>
                 </a>
             </li>
             <li [ngClass]="{active:routers[2].active}">
-                <a>
+                <a (click)="setActiveByPath(routers[2].href,'')" routerLink="{{routers[2].href}}">
                     <span><img class="side-menu-icon" src="/src/img/navigation_3.png"></span>
                     <span class="nav-label">{{routers[2].name}}</span>
                 </a>
             </li>
             <li [ngClass]="{active:routers[3].active}">
-                <a>
+                <a (click)="setActiveByPath(routers[3].href,'')" routerLink="{{routers[3].href}}">
                     <span><img class="side-menu-icon" src="/src/img/navigation_4.png"></span>
                     <span class="nav-label">{{routers[3].name}}</span>
                 </a>
              </li>
-
-
 
         </ul>
     </div>
