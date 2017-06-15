@@ -1,155 +1,326 @@
-import {Component, OnInit} from '@angular/core';
-import {NavComponent} from '../../dashboard/nav.component';
-import {Router, ActivatedRoute, Params} from '@angular/router';
-import {NgClass} from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { PostTableService } from '../../services/post-table.service';
+import { Input } from '@angular/core';
+import { Http, Response, URLSearchParams, Headers } from '@angular/http';
+import { Ng2SmartTableModule } from 'ng2-smart-table';
 
-
-@Component({
-  selector: 'ng2-table',
-
-  templateUrl: './datatable.component.html'
+@Component ({
+	selector:'app-charts',
+	templateUrl:'./datatable.component.html',
+	styleUrls:['./datatable.component.css', './info.component.css'],
 })
-export class DatatableComponent implements OnInit {
+export class DatatableComponent implements OnInit{
 
-  tableData = [
-    {id: 1, username: 'Geek', age: 42, salary: 1234},
-    {id: 2, username: 'TOM', age: 52, salary: 2345.64},
-    {id: 3, username: 'King', age: 51, salary: 8888},
-    {id: 4, username: 'QuEEN', age: 12, salary: 6663},
-    {id: 5, username: 'JACK', age: 13, salary: 4567},
-    {id: 6, username: 'KGC', age: 15, salary: 9870.123},
-    {id: 7, username: 'rose', age: 23, salary: 3456.78},
-    {id: 8, username: 'john', age: 78, salary: 6234},
-    {id: 9, username: 'lily', age: 56, salary: 7234},
-    {id: 10, username: 'hello', age: 34, salary: 8234},
-    {id: 11, username: 'james', age: 58, salary: 9234}
-  ];
+	public totalItems:number = 64;
+	public currentPage:number = 4;
+	public smallnumPages:number = 0;
 
+	public condition1:boolean;
+	public condition2:boolean;
+	public isBlank:boolean;
+	public para = "";
+	//火警楼宇数量
+	public cellNmuber:number;
+	//火警数量
+	public eventNumber:number;
+	// @Input() dataURL:string="src/mock-data/postlist-mock.json";
+	@Input () dataURL:string = "src/mock-data/firelist-mock.json";
+	public postList_dashboard:Array<any>;
+	public postList_detail:Array<any>;
+	//相对地址
+	//public url = "/fire-saas/DeviceEvent/getList";
+	//绝对地址
+	//火警监控接口
+	public url_dashboard = "http://115.159.114.116:8082/fire-saas/DeviceEvent/getRealTimeFireList";
 
-
-  constructor(
-      private parent:NavComponent,
-              private route:ActivatedRoute,
-              private router:Router) {
-  }
-
-  ngOnInit() {
-    // this.parent.setActiveByPath("tables", this.parent.datatable);
-
-  };
-  public totalItems: number = 64;
-  public currentPage: number = 4;
-  public smallnumPages: number = 0;
-
-  public setPage(pageNo: number): void {
-    this.currentPage = pageNo;
-  }
-
-  public pageChanged(event: any): void {
-    console.log('Page changed to: ' + event.page);
-    console.log('Number items per page: ' + event.itemsPerPage);
-  }
+	//消息详情接口
+	public url_detail = "http://115.159.114.116:8082/fire-saas/DeviceEvent/getList";
+	public headers = new Headers ({'Content-Type':'application/json;charset=utf-8'});
 
 
-  settings = {
-    columns: {
-      id: {
-        title: 'ID'
-      },
-      name: {
-        title: 'Full Name'
-      },
-      username: {
-        title: 'User Name'
-      },
-      email: {
-        title: 'Email'
-      }
-    },
-    mode : "inline",
-    delete:{
-      confirmDelete : true
-    }
-  };
+	constructor (private route:ActivatedRoute,
+	             private router:Router,
+	             public postTableService:PostTableService,
+	             private http:Http){
+	}
 
-  data = [
-    {
-      id: 1,
-      name: "Leanne Graham",
-      username: "Bret",
-      email: "Sincere@april.biz"
-    },
-    {
-      id: 2,
-      name: "Ervin Howell",
-      username: "Antonette",
-      email: "Shanna@melissa.tv"
-    },
-    {
-      id: 3,
-      name: "Clementine Bauch",
-      username: "Samantha",
-      email: "Nathan@yesenia.net"
-    },
-    {
-      id: 4,
-      name: "Patricia Lebsack",
-      username: "Karianne",
-      email: "Julianne.OConner@kory.org"
-    },
-    {
-      id: 5,
-      name: "Chelsey Dietrich",
-      username: "Kamren",
-      email: "Lucio_Hettinger@annie.ca"
-    },
-    {
-      id: 6,
-      name: "Mrs. Dennis Schulist",
-      username: "Leopoldo_Corkery",
-      email: "Karley_Dach@jasper.info"
-    },
-    {
-      id: 7,
-      name: "Kurtis Weissnat",
-      username: "Elwyn.Skiles",
-      email: "Telly.Hoeger@billy.biz"
-    },
-    {
-      id: 8,
-      name: "Nicholas Runolfsdottir V",
-      username: "Maxime_Nienow",
-      email: "Sherwood@rosamond.me"
-    },
-    {
-      id: 9,
-      name: "Glenna Reichert",
-      username: "Delphine",
-      email: "Chaim_McDermott@dana.io"
-    },
-    {
-      id: 10,
-      name: "Clementina DuBuque",
-      username: "Moriah.Stanton",
-      email: "Rey.Padberg@karina.biz"
-    },
-    {
-      id: 11,
-      name: "Nicholas DuBuque",
-      username: "Nicholas.Stanton",
-      email: "Rey.Padberg@rosamond.biz"
-    }
-  ];
+	public showConfig:boolean;
+	public showItem:string;
 
-  onDeleteConfirm(event): void {
-    console.log("delete function");
-    /*if (window.confirm('Are you sure you want to delete?')) {
-      event.confirm.resolve();
-    } else {
-      event.confirm.reject();
-    }*/
+	onClickFloor (floor:string){
+		if (floor==='4'){
+			this.showConfig = true;
+		} else {
+			this.showConfig = false;
+		}
+		this.showItem = '05';
+	}
 
-  }
+	public eventItems:Array<any> = [
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:5965,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s',
+			diviceCode:'G64N1L1D1'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:5969,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s',
+			diviceCode:'G64N1L1D2'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:5973,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s',
+			diviceCode:'G64N1L1D3'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:5977,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s',
+			diviceCode:'G64N1L1D4'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:5987,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s',
+			diviceCode:'G64N1L2D1'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:5991,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s',
+			diviceCode:'G64N1L2D2'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:5995,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s',
+			diviceCode:'G64N1L2D3'
+		},
+		{
+			eventId:0,
+			eventTakeTime:'',
+			confirmTime:'',
+			confirmFlag:'Y',
+			deviceId:5999,
+			createTime:'2017-01-01',
+			location:'南京霍尼韦尔',
+			deviceLabel:'1L2.345',
+			durationTime:'25s',
+			diviceCode:'G64N1L2D4'
+		}
+	];
 
+
+	ngOnInit (){
+		console.log ("Dashboard-->ngOnInit");
+		this.condition1 = true;
+		this.condition2 = false;
+		// this.parent.setActiveByPath (this.parent.dashboard, "");
+		// this.para = this.parent.para;
+		//请求SaaS数据，火警监控接口
+		this.getFireData();
+	};
+
+	public getFireData():void {
+		//请求SaaS数据，火警监控接口
+		this.http.post (this.url_dashboard, {},
+			{headers:this.headers})
+			.map (res => res.json ())
+			.subscribe (
+				data =>{
+					console.log ("成功-->火警监控");
+					console.log ("res.Success = " + data.Success);
+					console.log ("res.Datas.tatal = " + data.Datas.total);
+					console.log ("res.Datas.rows = " + JSON.stringify (data.Datas));
+					this.postList_dashboard = data.Datas.rows;
+					this.cellNmuber = data.Datas.total;
+					if(this.cellNmuber === 0) {
+						this.isBlank = true;
+					}else{
+						this.isBlank = false;
+					}
+					this.eventNumber = data.Datas.rows.totalFireEvent;
+					//监听observable对象
+					let disposable = this.postTableService.getPostTable ("")
+						.subscribe (
+							res =>{
+								//console.log("监听observable对象:" +res);
+								console.log ("监听observable对象-->res.Datas.rows:" + JSON.stringify (JSON.parse (res).Datas));
+
+								//下面的解析--Web State
+								let tempData = JSON.parse (res).Datas;
+								console.log ("监听observable对象-->res.Datas.rows:" + JSON.stringify (tempData));
+
+								if (!('rows' in tempData)){
+									//修改后的数据
+									let deviceCode = tempData.deviceCode;
+									let confirmFlag = tempData.confirmFlag;
+									console.log('监听observable对象-->修改 ConfirmFlag: deviceCode : '+deviceCode+"  confirmFlag :"+confirmFlag);
+									//CR：用户按下复位键清除，重新刷新界面
+
+									for (let eventItem of this.eventItems){
+										if (eventItem.diviceCode===deviceCode){
+											eventItem.confirmFlag = confirmFlag;
+											console.log ("监听observable对象-->修改成功 ConfirmFlag：deviceCode :"+deviceCode+ "  confirmFlag :" + eventItem.confirmFlag);
+										}
+									}
+									if(confirmFlag==='C'||confirmFlag==='R'||confirmFlag==='A') {
+										console.log ("用户按下复位键清除，重新刷新界面");
+										disposable.unsubscribe();
+										this.getFireData();
+										//实时更新列表状态
+										this.getFireDataDetail();
+									}
+								} else {
+									//先不加到列表里
+									//this.postList_dashboard.push (JSON.parse (res).Datas.rows[0]);
+									console.log ("有新数据上报，重新刷新界面");
+									disposable.unsubscribe();
+									this.getFireData();
+									//实时更新列表状态
+									this.getFireDataDetail();
+
+									data = JSON.parse (res).Datas.rows[0];
+									let cellName:string = data['cellName'];
+									let buildName = data.buildWithFireEvent[0].fireDeviceEventList.buildName;
+
+									//嵌套解析
+									for (let FireData of data.buildWithFireEvent){
+										for (let fireDeviceEventList of FireData.fireDeviceEventList){
+											let deviceCode = fireDeviceEventList.deviceCode;
+											let deviceLabel = fireDeviceEventList.deviceLabel;
+											console.log('监听observable对象-->收到新的 Event事件 ：the device code :'+deviceCode);
+											for (let fireDeviceEventList02 of fireDeviceEventList.fireDeviceEventList){
+												let deviceId = fireDeviceEventList02.deviceId;
+												for (let eventItem of this.eventItems){
+													if (eventItem.deviceId===deviceId){
+														eventItem.createTime = fireDeviceEventList02['createTime'];
+														eventItem.deviceLabel = deviceLabel;
+														eventItem.location = cellName + eventItem.deviceLabel;
+														eventItem.durationTime = fireDeviceEventList02['duration'];
+														eventItem.eventId = fireDeviceEventList02['eventId'];
+														eventItem.eventTakeTime = fireDeviceEventList02['eventTakeTime'];
+														eventItem.confirmTime = fireDeviceEventList02['confirmTime'];
+														eventItem.confirmFlag = fireDeviceEventList02['confirmFlag'];
+														eventItem.diviceCode = deviceCode;
+														console.log ("监听observable对象-->收到新的 Event事件： 修改后的的eventItem：the device code : "+deviceCode + " deviceID : "+ deviceId);
+														break;
+													}
+												}
+											}
+										}
+									}
+								}								
+							},
+							error =>{
+								console.log (error)
+							},
+							() =>{
+							}
+						);
+				},
+				err =>{
+					console.log ("火警监控错误");
+					console.log (err);
+				},
+				() =>{
+					console.log ("火警监控完成");
+					console.log ('Login Complete');
+				}
+			);		
+	}
+	public onClickView():void {
+		console.log ("-->onClickView()");
+	}
+
+	//请求SaaS数据，消息详情接口
+	public getFireDataDetail():void {
+		this.http.post (this.url_detail, {"confirmFlag":["N","A"]},
+			{headers:this.headers})
+			.map (res => res.json ())
+			.subscribe (
+				data =>{
+					console.log ("成功-->消息详情");
+					console.log ("res.Success = " + data.Success);
+					console.log ("res.Datas.tatal = " + data.Datas.total);
+					//console.log ("res.Datas.rows = " + JSON.stringify (data.Datas.rows));
+					this.postList_detail = data.Datas.rows;
+				},
+				err =>{
+					console.log ("消息详情错误");
+					console.log (err);
+				},
+				() =>{
+					console.log ("消息详情完成");
+					console.log ('Login Complete');
+				}
+			);
+	} 
+
+	public onClickCell():void {
+		//请求SaaS数据，消息详情接口
+		this.getFireDataDetail();
+		console.log ("-->onClickCell()");
+		this.condition1 = false;
+		this.condition2 = true;
+	}
+
+	public onClickBack():void {
+		console.log ("-->onClickBack()");
+		this.condition1 = true;
+		this.condition2 = false;
+	}
+
+	public changeItemColor(flag:string):boolean {
+		if(flag==='N')
+			return true;
+		else return false;
+	}
 
 }

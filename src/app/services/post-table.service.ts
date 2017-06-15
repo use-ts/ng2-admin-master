@@ -24,6 +24,7 @@ export class PostTableService {
                 this.ws.onOpen(msg=>{
                     console.log("websocket-->ws.onOpen");
                     //observer.next("ws.onOpen");
+                    this.ws.send("Websocket心跳包");
                 });
 
                 this.ws.onMessage(msg=>
@@ -32,6 +33,7 @@ export class PostTableService {
                     //console.log("websocket-->ws.onMessage" + JSON.stringify(msg.data));
                     //console.log("websocket-->ws.onMessage" + msg.data);
                     observer.next(msg.data);
+                    this.ws.send("Websocket心跳包");
                 });
                 this.ws.onClose(msg=>
                 {
