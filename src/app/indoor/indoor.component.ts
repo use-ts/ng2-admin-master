@@ -43,6 +43,7 @@ import { WebsocketEventItem } from "./WebsocketEventItem";
 export class IndoorComponent implements OnInit{
 	@Input () configurated:boolean;
 	@Input () eventItems:Array<WebsocketEventItem>;
+	@Input () isFire:boolean;
 	public itemState:Array<any>;
 	public EventItem:WebsocketEventItem;
 

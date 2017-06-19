@@ -226,36 +226,39 @@ export class DatatableComponent implements OnInit{
 									//实时更新列表状态
 									this.getFireDataDetail();
 
-									data = JSON.parse (res).Datas.rows[0];
-									let cellName:string = data['cellName'];
-									let buildName = data.buildWithFireEvent[0].fireDeviceEventList.buildName;
+									this.updateIndoorEventStatus(tempData);
+
+
+									// data = JSON.parse (res).Datas.rows[0];
+									// let cellName:string = data['cellName'];
+									// let buildName = data.buildWithFireEvent[0].fireDeviceEventList.buildName;
 
 									//嵌套解析
-									for (let FireData of data.buildWithFireEvent){
-										for (let fireDeviceEventList of FireData.fireDeviceEventList){
-											let deviceCode = fireDeviceEventList.deviceCode;
-											let deviceLabel = fireDeviceEventList.deviceLabel;
-											console.log('监听observable对象-->收到新的 Event事件 ：the device code :'+deviceCode);
-											for (let fireDeviceEventList02 of fireDeviceEventList.fireDeviceEventList){
-												let deviceId = fireDeviceEventList02.deviceId;
-												for (let eventItem of this.eventItems){
-													if (eventItem.deviceId===deviceId){
-														eventItem.createTime = fireDeviceEventList02['createTime'];
-														eventItem.deviceLabel = deviceLabel;
-														eventItem.location = cellName + eventItem.deviceLabel;
-														eventItem.durationTime = fireDeviceEventList02['duration'];
-														eventItem.eventId = fireDeviceEventList02['eventId'];
-														eventItem.eventTakeTime = fireDeviceEventList02['eventTakeTime'];
-														eventItem.confirmTime = fireDeviceEventList02['confirmTime'];
-														eventItem.confirmFlag = fireDeviceEventList02['confirmFlag'];
-														eventItem.diviceCode = deviceCode;
-														console.log ("监听observable对象-->收到新的 Event事件： 修改后的的eventItem：the device code : "+deviceCode + " deviceID : "+ deviceId);
-														break;
-													}
-												}
-											}
-										}
-									}
+									// for (let FireData of data.buildWithFireEvent){
+									// 	for (let fireDeviceEventList of FireData.fireDeviceEventList){
+									// 		let deviceCode = fireDeviceEventList.deviceCode;
+									// 		let deviceLabel = fireDeviceEventList.deviceLabel;
+									// 		console.log('监听observable对象-->收到新的 Event事件 ：the device code :'+deviceCode);
+									// 		for (let fireDeviceEventList02 of fireDeviceEventList.fireDeviceEventList){
+									// 			let deviceId = fireDeviceEventList02.deviceId;
+									// 			for (let eventItem of this.eventItems){
+									// 				if (eventItem.deviceId===deviceId){
+									// 					eventItem.createTime = fireDeviceEventList02['createTime'];
+									// 					eventItem.deviceLabel = deviceLabel;
+									// 					eventItem.location = cellName + eventItem.deviceLabel;
+									// 					eventItem.durationTime = fireDeviceEventList02['duration'];
+									// 					eventItem.eventId = fireDeviceEventList02['eventId'];
+									// 					eventItem.eventTakeTime = fireDeviceEventList02['eventTakeTime'];
+									// 					eventItem.confirmTime = fireDeviceEventList02['confirmTime'];
+									// 					eventItem.confirmFlag = fireDeviceEventList02['confirmFlag'];
+									// 					eventItem.diviceCode = deviceCode;
+									// 					console.log ("监听observable对象-->收到新的 Event事件： 修改后的的eventItem：the device code : "+deviceCode + " deviceID : "+ deviceId);
+									// 					break;
+									// 				}
+									// 			}
+									// 		}
+									// 	}
+									// }
 								}								
 							},
 							error =>{
@@ -301,11 +304,79 @@ export class DatatableComponent implements OnInit{
 					console.log ('Login Complete');
 				}
 			);
-	} 
+	}
+
+
+	//add by Shoudong/H157925
+	//更新火警详情页面数据
+	private updateIndoorEventStatus(res:any):void{
+		var list = res.rows;
+		for (let cellItem of list){
+			//嵌套解析
+			for (let FireData of cellItem.buildWithFireEvent){
+				let cellName:string = FireData['cellName'];
+				for (let fireDeviceEventList of FireData.fireDeviceEventList){
+					let deviceCode = fireDeviceEventList.deviceCode;
+					let deviceLabel = fireDeviceEventList.deviceLabel;
+					console.log('updateIndoorEventStatus-->收到新的 Event事件 ：the device code :'+deviceCode);
+					for (let fireDeviceEventList02 of fireDeviceEventList.fireDeviceEventList){
+						let deviceId = fireDeviceEventList02.deviceId;
+						for (let eventItem of this.eventItems){
+							if (eventItem.deviceId===deviceId){
+								eventItem.createTime = fireDeviceEventList02['createTime'];
+								eventItem.deviceLabel = deviceLabel;
+								eventItem.location = cellName + eventItem.deviceLabel;
+								eventItem.durationTime = fireDeviceEventList02['duration'];
+								eventItem.eventId = fireDeviceEventList02['eventId'];
+								eventItem.eventTakeTime = fireDeviceEventList02['eventTakeTime'];
+								eventItem.confirmTime = fireDeviceEventList02['confirmTime'];
+								eventItem.confirmFlag = fireDeviceEventList02['confirmFlag'];
+								eventItem.diviceCode = deviceCode;
+								console.log ("updateIndoorEventStatus-->收到新的 Event事件： 修改后的的eventItem：the device code : "+deviceCode + " deviceID : "+ deviceId);
+								break;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
+	//add by Shoudong/H157925
+	//请求室内平面图的初始状态
+	public getFireIndoorInitialDetail(cellId:number):void{
+		console.log("test getFireIndoorInitialDetail");
+		this.http.post (this.url_dashboard, {"cellId":cellId},
+			{headers:this.headers})
+			.map (res => res.json ())
+			.subscribe (
+				data =>{
+					console.log ("getFireIndoorInitialDetail-->res.Datas.rows:" + JSON.stringify (data));
+
+					this.updateIndoorEventStatus(data.Datas);
+				},
+				err =>{
+					console.log ("getFireIndoorInitialDetail 室内平面图初始化");
+					console.log (err);
+				},
+				() =>{
+					console.log (" getFireIndoorInitialDetail 室内平面图初始化");
+				}
+			);
+	}
+
+
+
 
 	public onClickCell():void {
 		//请求SaaS数据，消息详情接口
 		this.getFireDataDetail();
+
+		//add by h157925 这里需要传入 CellID
+		this.getFireIndoorInitialDetail(100);
+
+
 		console.log ("-->onClickCell()");
 		this.condition1 = false;
 		this.condition2 = true;

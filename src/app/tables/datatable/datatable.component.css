@@ -104,21 +104,22 @@
     width: 200px;
     color: #939393;
 }
-.panel-fire{
+
+.panel-fire {
     padding: 0px 10px !important;
 }
-.panel-fire-head{
+
+.panel-fire-head {
     height: 56px;
     padding: 0px 0px !important;
 }
+
 .panel-heading-left {
     height: inherit;
     float: left !important;
     padding-top: 10px;
     padding-left: 10px;
 }
-
-
 
 .number_building {
     color: red;
@@ -235,19 +236,27 @@
     padding: 5px 0px;
     background-color: #f8f8f8;
 }
-.table-fire-list-title{
+
+.table-fire-list-title {
     font-size: 18px;
     color: #676767;
     padding: 5px 5px;
 }
+
 .table-fire-list-div{
+    width: 92%;
+    float: left;
     padding: 5px 5px;
+    border-right: 1px solid #e0e0e0;
 }
-.table-fire-list-time,.table-fire-list-confirmflag, .table-fire-list-message-type-id,.table-fire-list-message-type-detail,.table-fire-list-event-id{
-    padding-right: 80px;
+.table-fire-list-time, .table-fire-list-confirmflag, .table-fire-list-message-type-id, .table-fire-list-message-type-detail, .table-fire-list-event-id {
+    padding-right: 10px;
+    padding-left: 10px;
     padding-top: 10px;
-    width:200px
+    min-width: 120px;
+    width: 200px;
 }
+
 .panel-heading-right {
     height: inherit;
     background-color: #f0f0f0;
@@ -255,34 +264,39 @@
     margin-right: -10px;
 }
 
-.panel-heading-right-contract{
+.panel-heading-right-contract {
     padding-left: 40px;
     padding-top: 10px;
     padding-right: 10px;
     background-color: #f0f0f0;
 }
-.panel-heading-right-contract-detail{
+
+.panel-heading-right-contract-detail {
     padding: 0px !important;
     margin: 0px !important;
 }
-.panel-heading-right-contract-name{
+
+.panel-heading-right-contract-name {
     font-size: 12px;
     color: #919191;
     border: 0 !important;
     padding: 0 !important;
 }
-.panel-heading-right-contract-rule{
+
+.panel-heading-right-contract-rule {
     font-size: 9px;
     color: #919191;
     border: 0 !important;
     padding: 0 !important;
 }
-.panel-heading-right-connect{
+
+.panel-heading-right-connect {
     padding-left: 10px;
     padding-right: 10px;
     background-color: #f0f0f0;
 }
-.panel-heading-right-connect-list{
+
+.panel-heading-right-connect-list {
     padding: 0px 5px;
     position: absolute;
     left: 10px;
@@ -293,32 +307,47 @@
     -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
     box-shadow: 0 0px 0px rgba(0, 0, 0, .175);
 }
-.panel-heading-right-connect-list-item{
+
+.panel-heading-right-connect-list-item {
 
 }
-.panel-heading-right-connect{
+
+.panel-heading-right-connect {
     background-color: transparent;
     font-size: 18px;
     color: #919191;
 }
-#panel-heading-right-connect-btn{
+
+#panel-heading-right-connect-btn {
     padding-top: 10px;
     padding-right: 10px;
     background-color: transparent;
     font-size: 16px;
 }
-.panel-heading-right-more{
+
+.panel-heading-right-more {
     padding: 20px 20px;
     background-color: transparent;
     border-left: 1px solid #e0e0e0;
 }
+
 .indoor-image-show {
     width: 500px;
     height: 500px;
 }
-.confirm-item-state-red{
+
+.confirm-item-state-red {
     color: red !important;
 }
-.confirm-item-state-orange{
+
+.confirm-item-state-orange {
     color: orange !important;
+}
+
+.table-fire-more-div{
+    width: 5%;
+    height: 300%;
+    margin-top: 30px;
+    margin-left: 20px;
+    float: left;
 }

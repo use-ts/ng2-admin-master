@@ -241,12 +241,16 @@
     padding: 5px 5px;
 }
 .table-fire-list-div{
+    width: 92%;
+    float: left;
     padding: 5px 5px;
+    border-right: 1px solid #e0e0e0;
 }
 .table-fire-list-time,.table-fire-list-confirmflag, .table-fire-list-message-type-id,.table-fire-list-message-type-detail,.table-fire-list-event-id{
-    padding-right: 80px;
+    padding-right: 10px;
+    padding-left: 10px;
     padding-top: 10px;
-    width:200px
+    min-width: 160px;
 }
 .panel-heading-right {
     height: inherit;
@@ -319,6 +323,13 @@
 .confirm-item-state-red{
     color: red !important;
 }
-.confirm-item-state-orange{
+.confirm-item-state-orange {
     color: orange !important;
+}
+.table-fire-more-div{
+    width: 5%;
+    height: 300%;
+    margin-top: 30px;
+    margin-left: 20px;
+    float: left;
 }

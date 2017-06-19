@@ -96,6 +96,9 @@
                                 <td class="table-fire-list-event-id">{{device.deviceCode}}</td>
                             </tr>
                         </div>
+                        <div class="table-fire-more-div" (click)="onClickCell()">
+                            <span class="glyphicon glyphicon-option-horizontal"></span>
+                        </div>
                         </tbody>
                     </table>
                 </div>
@@ -114,40 +117,42 @@
     <div>
         <button type="button" class="btn btn-default" (click)="onClickBack()"><</button>
     </div>
-    <div class="dropdown float-num-list">
-        <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
-                data-toggle="dropdown">
-            3号楼
-            <span class="caret"></span>
-        </button>
-        <ul class="dropdown-menu dropdownMenu1-list" role="menu">
-            <li role="presentation" class="dropdownMenu1-list-item">
-                <a role="menuitem" tabindex="-1" (click)="onClickFloor('1')">第一层 <span class="caret"></span></a>
-            </li>
-            <li role="presentation" class="dropdownMenu1-list-item">
-                <a role="menuitem" tabindex="-1" (click)="onClickFloor('2')">第二层 <span class="caret"></span></a>
-            </li>
-            <li role="presentation" class="dropdownMenu1-list-item">
-                <a role="menuitem" tabindex="-1" (click)="onClickFloor('3')">第三层 <span class="caret"></span></a>
-            </li>
-            <li role="presentation" class="dropdownMenu1-list-item">
-                <a role="menuitem" tabindex="-1" (click)="onClickFloor('4')">第四层 <span class="caret"></span></a>
-            </li>
-            <li role="presentation" class="dropdownMenu1-list-item">
-                <a role="menuitem" tabindex="-1" (click)="onClickFloor('5')">第五层 <span class="caret"></span></a>
-            </li>
-        </ul>
+    <div *ngIf="isConfig">
+        <div class="dropdown float-num-list">
+            <button type="button" class="btn dropdown-toggle" id="dropdownMenu1"
+                    data-toggle="dropdown">
+                3号楼
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdownMenu1-list" role="menu">
+                <li role="presentation" class="dropdownMenu1-list-item">
+                    <a role="menuitem" tabindex="-1" (click)="onClickFloor('1')">第一层 <span class="caret"></span></a>
+                </li>
+                <li role="presentation" class="dropdownMenu1-list-item">
+                    <a role="menuitem" tabindex="-1" (click)="onClickFloor('2')">第二层 <span class="caret"></span></a>
+                </li>
+                <li role="presentation" class="dropdownMenu1-list-item">
+                    <a role="menuitem" tabindex="-1" (click)="onClickFloor('3')">第三层 <span class="caret"></span></a>
+                </li>
+                <li role="presentation" class="dropdownMenu1-list-item">
+                    <a role="menuitem" tabindex="-1" (click)="onClickFloor('4')">第四层 <span class="caret"></span></a>
+                </li>
+                <li role="presentation" class="dropdownMenu1-list-item">
+                    <a role="menuitem" tabindex="-1" (click)="onClickFloor('5')">第五层 <span class="caret"></span></a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-md-offset-3 indoor-image-show">
+            <!--<img src="/src/img/floor.png" height="500" width="500" alt="项目信息"/>-->
+            <app-indoor [configurated]="showConfig" [eventItems]='eventItems'></app-indoor>
+
+        </div>
+
+        <br>
+        <br>   
     </div>
-
-
-    <div class="col-md-offset-3 indoor-image-show">
-        <!--<img src="/src/img/floor.png" height="500" width="500" alt="项目信息"/>-->
-        <app-indoor [configurated]="showConfig" [eventItems]='eventItems'></app-indoor>
-
-    </div>
-
-    <br>
-    <br>
+ 
 
     <div class="top_bar">
         <div>

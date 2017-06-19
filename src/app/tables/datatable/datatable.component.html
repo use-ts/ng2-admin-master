@@ -88,13 +88,16 @@
                             <tr class="table-item" *ngFor="let event of device.fireDeviceEventList">
                                 <td class="table-fire-list-time">{{event.createTime}}</td>
                                 <td class="table-fire-list-confirmflag" [class.confirm-item-state-red]="changeItemColor(event.confirmFlag)"
-                                [class.confirm-item-state-orange]="!changeItemColor(event.confirmFlag)">
+                                    [class.confirm-item-state-orange]="!changeItemColor(event.confirmFlag)">
                                     {{event.confirmFlag==="N"?"未确认":"已确认"}}
                                 </td>
                                 <td class="table-fire-list-message-type-id">{{device.deviceLabel}}</td>
                                 <td class="table-fire-list-message-type-detail">{{device.deviceType}}</td>
                                 <td class="table-fire-list-event-id">{{device.deviceCode}}</td>
                             </tr>
+                        </div>
+                        <div class="table-fire-more-div" (click)="onClickCell()">
+                            <span class="glyphicon glyphicon-option-horizontal"></span>
                         </div>
                         </tbody>
                     </table>
