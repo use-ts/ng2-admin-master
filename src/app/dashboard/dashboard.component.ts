@@ -181,15 +181,21 @@ export class DashboardComponent implements OnInit{
 				data =>{
 					console.log ("成功-->火警监控");
 					console.log ("res.Success = " + data.Success);
+					if(typeof(data.Datas)=="undefined"){ 
+						alert("火警监控接口返回为undefined"); 
+						return;
+					} 
 					console.log ("res.Datas.tatal = " + data.Datas.total);
 					console.log ("res.Datas.rows = " + JSON.stringify (data.Datas));
 					this.postList_dashboard = data.Datas.rows;
 					//是否配置了区域
-					// if(this.postList_dashboard[0].buildWithFireEvent[0].buildName == "") {
-					// 	this.isConfig = false;
-					// }else{
+					if(this.postList_dashboard[0].buildWithFireEvent[0].buildName == "") {
+						this.isConfig = false;
+						console.log ("没有配置防火区域！");
+					}else{
 					 	this.isConfig = true;
-					// }
+						 console.log ("配置了防火区域");
+					}
 					this.cellNmuber = data.Datas.total;
 					if(this.cellNmuber === 0) {
 						this.isBlank = true;

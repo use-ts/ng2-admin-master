@@ -115,7 +115,9 @@
 
 <div *ngIf="condition2">
     <div>
-        <button type="button" class="btn btn-default" (click)="onClickBack()"><</button>
+        <button type="button" class="btn btn-default" (click)="onClickBack()">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        </button>
     </div>
     <div *ngIf="isConfig">
         <div class="dropdown float-num-list">
