@@ -57,6 +57,8 @@ export class LoginComponent implements OnInit {
 
           },
           err => {
+            //登陆失败也跳转
+            this.router.navigate(['/main/1']);
             console.log("错误");
             console.log(err);  
           },

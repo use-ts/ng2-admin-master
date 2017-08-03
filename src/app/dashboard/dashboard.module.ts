@@ -21,6 +21,8 @@ import { AmapComponent } from '../charts/map/amap/amap.component';
 import { IndoorComponent } from "../indoor/indoor.component";
 import { PopoverModule } from 'ng2-popover'
 
+import { Ng2Echarts } from 'ng2-echarts';
+
 const tablesRoutes:Routes = [
 	{
 		path:'main/:id',
@@ -61,7 +63,8 @@ const tablesRoutes:Routes = [
 		PluginComponent,
 		AmapComponent,
 		GaodeMapComponent,
-		IndoorComponent
+		IndoorComponent,
+		Ng2Echarts
 	],
 	providers:[]
 })
