@@ -20,8 +20,9 @@ import { GaodeMapComponent } from '../charts/map/gaode-map.component';
 import { AmapComponent } from '../charts/map/amap/amap.component';
 import { IndoorComponent } from "../indoor/indoor.component";
 import { PopoverModule } from 'ng2-popover'
-
 import { Ng2Echarts } from 'ng2-echarts';
+import { ProjectManageComponent } from "../project-manage/project-manage.component";
+import { ProjectManageService } from "../project-manage/project-manage.service";
 
 const tablesRoutes:Routes = [
 	{
@@ -34,7 +35,7 @@ const tablesRoutes:Routes = [
 			{path:'pieCharts', component:GaodeMapComponent},
 			{path:'datatable', component:DatatableComponent},
 			{path:'bootstrap-static', component:BootstrapComponent},
-			{path:'bootstrap-plugin', component:PluginComponent}
+			{path:'project-manage', component:ProjectManageComponent}
 		]
 	}
 ]
@@ -50,8 +51,6 @@ const tablesRoutes:Routes = [
 		Ng2SmartTableModule,
 		FileUploadModule,
 		PopoverModule
-
-
 	],
 	declarations:[
 		NavComponent,
@@ -64,9 +63,12 @@ const tablesRoutes:Routes = [
 		AmapComponent,
 		GaodeMapComponent,
 		IndoorComponent,
-		Ng2Echarts
+		Ng2Echarts,
+		ProjectManageComponent
 	],
-	providers:[]
+	providers:[
+		ProjectManageService
+	]
 })
 export class DashboardModule{
 }

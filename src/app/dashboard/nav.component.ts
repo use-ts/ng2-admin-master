@@ -36,7 +36,7 @@ export class NavComponent implements OnInit {
     this.dashboard = "/main/"+this.para+"/dashboard";
     this.datatable = "/main/"+this.para+"/datatable";
     this.bootstrap = "/main/"+this.para+"/bootstrap-static";
-    this.plugin = "/main/"+this.para+"/bootstrap-plugin";
+    this.plugin = "/main/"+this.para+"/project-manage";
 
     this.routers = [
       {
@@ -56,7 +56,7 @@ export class NavComponent implements OnInit {
       },
       {
         href: this.plugin,
-        name: "用户管理",
+        name: "项目管理",
         type: false
       }
 
