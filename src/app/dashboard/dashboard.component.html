@@ -106,7 +106,118 @@
         </div>
 
         <div class="tab-pane fade" id="previous">
-            <!--<p>当前有21个楼宇发生了86条火警</p>-->
+            
+            <div class="container">
+                <!-- <p>当前有21个楼宇发生了86条火警</p>  -->
+                <div class="row row_full" >
+                    <div class="col-sm-3 shadow">
+                    <div [ng2-echarts]="optionCur1" style="height: 200px; width: 100%"></div> 
+                    </div> 
+                    <div class="col-sm-3 shadow">
+                    <div [ng2-echarts]="optionCir" style="height: 200px; width: 100%"></div> 
+                    </div> 
+                    <div class="col-sm-3 shadow">
+                    <div [ng2-echarts]="optionLine1" style="height: 200px; width: 100%"></div> 
+                    </div> 
+                    <div class="col-sm-3 shadow">
+                    <div [ng2-echarts]="optionLine2" style="height: 200px; width: 100%"></div> 
+                    </div>
+                </div>
+
+                <div class="row row_full">
+                     <div class="col-sm-2 shadow" >
+                        <!-- <div [ng2-echarts]="optionLine1" style="height: 300px; width: 100%"></div>  -->
+                        <img style="height: 300px; width: 100%" src="/src/img/chart1.png">
+                    </div>
+                    <div class="col-sm-8 shadow" >
+                        <div style="height: 300px; width: 100%">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>发生时间</th>
+                                    <th>火警级别</th>
+                                    <th>项目名称</th>
+                                    <th>设备类型</th>
+                                    <th>设备位置</th>
+                                    <th>持续时长</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>2017/3/10 18:12:32</td>
+                                    <td>火警</td>
+                                    <td>希尔顿酒店</td>
+                                    <td>烟感探测器</td>
+                                    <td>B号楼3楼</td>
+                                    <td>21秒</td>
+                                </tr>
+                                <tr>
+                                    <td>2017/3/10 18:12:32</td>
+                                    <td>火警</td>
+                                    <td>希尔顿酒店</td>
+                                    <td>烟感探测器</td>
+                                    <td>B号楼3楼</td>
+                                    <td>21秒</td>
+                                </tr>
+                                <tr>
+                                    <td>2017/3/10 18:12:32</td>
+                                    <td>火警</td>
+                                    <td>希尔顿酒店</td>
+                                    <td>烟感探测器</td>
+                                    <td>B号楼3楼</td>
+                                    <td>21秒</td>
+                                </tr>
+                                <tr>
+                                    <td>2017/3/10 18:12:32</td>
+                                    <td>火警</td>
+                                    <td>希尔顿酒店</td>
+                                    <td>烟感探测器</td>
+                                    <td>B号楼3楼</td>
+                                    <td>21秒</td>
+                                </tr>
+                                <tr>
+                                    <td>2017/3/10 18:12:32</td>
+                                    <td>火警</td>
+                                    <td>希尔顿酒店</td>
+                                    <td>烟感探测器</td>
+                                    <td>B号楼3楼</td>
+                                    <td>21秒</td>
+                                </tr>
+                                <tr>
+                                    <td>2017/3/10 18:12:32</td>
+                                    <td>火警</td>
+                                    <td>希尔顿酒店</td>
+                                    <td>烟感探测器</td>
+                                    <td>B号楼3楼</td>
+                                    <td>21秒</td>
+                                </tr>
+                                <tr>
+                                    <td>2017/3/10 18:12:32</td>
+                                    <td>火警</td>
+                                    <td>希尔顿酒店</td>
+                                    <td>烟感探测器</td>
+                                    <td>B号楼3楼</td>
+                                    <td>21秒</td>
+                                </tr>
+                                <tr>
+                                    <td>2017/3/10 18:12:32</td>
+                                    <td>火警</td>
+                                    <td>希尔顿酒店</td>
+                                    <td>烟感探测器</td>
+                                    <td>B号楼3楼</td>
+                                    <td>21秒</td>
+                                </tr>
+                            </tbody>
+                        </table>   
+                        </div> 
+                    </div>
+                    <div class="col-sm-2 shadow" >
+                        <!-- <div [ng2-echarts]="optionCur2" style="height: 300px; width: 100%"></div> -->
+                            <img style="height: 300px; width: 100%" src="/src/img/chart2.png">                             
+                    </div> 
+                </div>
+                
+            </div>            
         </div>
     </div>
 

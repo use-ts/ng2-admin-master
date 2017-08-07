@@ -1,10 +1,31 @@
-<div>
+<div class="container">
     <div class="row">
-        <!-- <div class="col-sm-6">
-        	<h3>地图插件调试</h3>
+         <div class="col-sm-6" >
+        	<!-- <h3>地图插件调试</h3> -->
             <amap></amap>
-        </div> -->
-        <div [ng2-echarts]="chartData" style="height: 300px; width: 100%"></div>
+        </div> 
+         <div class="col-sm-3 shadow">
+         <div [ng2-echarts]="optionCir" style="height: 120px; width: 100%"></div> 
+        </div> 
+        <div class="col-sm-3 shadow">
+         <div [ng2-echarts]="optionCir" style="height: 120px; width: 100%"></div> 
+        </div> 
+        <div class="col-sm-6 shadow">
+         <div [ng2-echarts]="optionCur1" style="height: 200px; width: 100%"></div> 
+        </div> 
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3 shadow" >
+            <div [ng2-echarts]="optionLine1" style="height: 300px; width: 100%"></div> 
+        </div>
+        <div class="col-sm-3 shadow" >
+        	<div [ng2-echarts]="optionLine2" style="height: 300px; width: 100%"></div> 
+        </div>
+        <div class="col-sm-6 shadow" >
+        	<div [ng2-echarts]="optionCur2" style="height: 300px; width: 100%"></div>
+        </div>
     </div>
     
 </div>
